@@ -1,0 +1,8 @@
+@mixin de-title-lg-text( $opacity: 1, $color: $de-text-color, $letter_spacing: $de-title-letter-spacing) {
+    font-family: $de-font-family-barlow;
+    font-size: $de-title-lg-font-size;
+    font-weight: $de-title-lg-font-weight;
+    line-height: $de-title-lg-line-height;
+    letter-spacing: $letter_spacing;
+    color: rgba($color, $opacity);
+}

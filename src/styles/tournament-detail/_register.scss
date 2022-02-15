@@ -1,0 +1,99 @@
+.de-register-tab {
+    margin-bottom: 88px;
+    .de-team-name {
+        @include de-heading-text();
+        font-size: 24px;
+        line-height: 125%;
+        color: $de-text-color;
+        margin-bottom: 58px;
+        text-align: center;
+    }
+    .de-tournament-profile {
+        display: flex;
+        align-items: center;
+        .de-tournament-profile-logo {
+            @include de-image-icon(120px, 32px)
+        }
+        .de-tournament-profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: calc(100% - 152px);
+            .de-tournament-profile-name {
+                @include de-heading-text();
+                font-size: 24px;
+                line-height: 125%;
+                color: $de-text-color;
+            }
+        }
+    }
+    .de-section-title {
+        margin-bottom: $de-spacer;
+        @include de-normal-text(1, $de-secondary-color);
+    }
+    .de-section-description {
+        margin-bottom: $de-spacer;
+        @include de-small-text(0.5);
+    }
+    .de-section-note {
+        @include de-small-text();
+        color: $de-danger-color;
+    }
+    .de-tournament-config {
+        display: flex;
+        .tournament-config-logo {
+            @include de-image-icon(72px, 24px)
+        }
+        .tournament-config-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: calc(100% - 96px);
+            .de-btn-select {
+                margin-bottom: 12px
+            }
+            .tournament-config-name {
+                @include de-normal-text();
+                @include de-heading-text();
+                margin-bottom: 12px;
+            }
+            .tournament-config-description {
+                @include de-normal-text(0.5);
+                margin-bottom: 24px;
+            }
+            .de-user-card {
+                width: 100%;
+                padding: 16px;
+                border-radius: $de-border-radius;
+                position: relative;
+                .de-user-card-username {
+                    color: $de-text-color;
+                    opacity: 1;
+                    text-transform: uppercase;
+                }
+                &:nth-child(2n) {
+                    background: rgba(139, 92, 228, 0.1);
+                }
+                &::before {
+                    content: '';
+                    width: $de-icon-width;
+                    height: $de-icon-height;
+                    top: 24px;
+                    right: 24px;
+                    position: absolute;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: $de-transition-default;
+                    background-image: url("/assets/images/selected-icon.svg");
+                    background-size: 100% 100%;
+                }
+                &.checked {
+                    &::before {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}

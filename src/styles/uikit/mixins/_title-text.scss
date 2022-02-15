@@ -1,0 +1,9 @@
+@mixin de-title-text( $opacity: 1, $color: $de-text-color, $text_transform: capitalize, $letter_spacing: $de-title-letter-spacing) {
+    font-family: $de-font-family-barlow;
+    font-size: $de-title-font-size;
+    font-weight: $de-title-font-weight;
+    line-height: $de-title-line-height;
+    letter-spacing: $letter_spacing;
+    color: rgba($color, $opacity);
+    text-transform: $text_transform;
+}

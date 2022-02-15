@@ -1,0 +1,17 @@
+@mixin de-image-icon($size: $de-icon-width, $right_space: 0) {
+    width: $size;
+    min-width: $size;
+    height: $size;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @if ($right_space !=0) {
+        margin-right: $right_space;
+    }
+    img,
+    svg {
+        height: 100%;
+        object-fit: cover;
+    }
+}

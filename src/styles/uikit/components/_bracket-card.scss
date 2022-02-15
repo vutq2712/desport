@@ -1,0 +1,126 @@
+.de-bracket-card {
+    &.success {
+        .de-bracket-card-logo {
+            color: $de-success-color;
+        }
+    }
+    &.warning {
+        .de-bracket-card-logo {
+            color: $de-state-color-orange;
+        }
+    }
+    &.primary {
+        .de-bracket-card-logo {
+            color: $de-primary-color;
+        }
+    }
+    .de-bracket-card-header {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 16px;
+        .de-bracket-card-title {
+            margin-left: 12px;
+            font-size: 22px;
+            line-height: 32px;
+        }
+        .de-tag {
+            margin-left: 12px;
+        }
+        .de-bracket-card-percent {
+            margin-left: 12px;
+            &.up {
+                color: $de-success-color;
+            }
+            &.down {
+                color: $de-danger-color;
+            }
+        }
+    }
+    .de-bracket-card-summary {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .de-bracket-subinfo {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            @include de-normal-text();
+            margin-right: 32px;
+            &:last-child {
+                margin-right: 0;
+            }
+            label {
+                color: $de-primary-color;
+                margin-right: 8px;
+            }
+        }
+    }
+    .de-prize-pool-card {
+        background-color: transparent;
+        border: 0;
+        .de-prize-pool-card-toggle {
+            display: inline-flex;
+            height: 24px;
+            width: auto;
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            box-shadow: none;
+            margin-bottom: 16px;
+            padding: 0 32px 0 0;
+            @include de-title-text(0.5);
+            text-transform: uppercase;
+            &::after {
+                width: 24px;
+                height: 24px;
+                background-size: 12px 12px;
+                background-position: center center;
+                margin-left: 8px;
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            }
+        }
+        .de-prize-pool-stat {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            @include de-normal-text();
+            svg {
+                width: 21px;
+            }
+        }
+        .de-prize-pool-card-body {
+            padding: 0;
+            table {
+                margin-bottom: 0;
+                tr {
+                    td {
+                        border-color: $de-border-color;
+                        text-align: center;
+                        padding-top: 13px;
+                        padding-bottom: 13px;
+                        @include de-normal-text();
+                        &:first-child {
+                            text-align: left;
+                            padding-left: 0;
+                            @include de-title-text();
+                            text-transform: uppercase;
+                        }
+                        &:last-child {
+                            text-align: right;
+                            padding-right: 0;
+                        }
+                    }
+                    &:last-child {
+                        td {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

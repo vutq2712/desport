@@ -1,0 +1,192 @@
+// Highlight
+.de-card.highlight {
+    position: relative;
+    background-color: $de-secondary-color;
+    .de-card-header,
+    .de-card-body {
+        position: relative;
+        z-index: 3;
+    }
+    &::before,
+    &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: $de-border-radius;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &::before {
+        background: $de-gradient-blue;
+        opacity: 0.6;
+        z-index: 1;
+    }
+    &::after {
+        background: $de-gradient-dark;
+        opacity: 0.5;
+        z-index: 2;
+        background-image: url(/assets/images/highlight-decor.png);
+        background-position: top right;
+        background-repeat: no-repeat;
+    }
+}
+
+// Stats
+.de-overall-stats {
+    margin-top: 20px;
+    .de-overall-balance {
+        margin-bottom: 28px;
+        .de-balance-symbol {
+            font-family: $de-font-family-barlow;
+            font-size: 36px;
+            line-height: 32px;
+            color: $de-text-color;
+            margin-right: 8px;
+        }
+        .de-balance-value {
+            font-family: $de-font-family-barlow;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 58px;
+            color: $de-text-color;
+            margin-right: 12px;
+        }
+        .de-balance-note {
+            @include de-normal-text(0.7);
+        }
+    }
+    .de-overall-card {
+        padding: 32px;
+        height: 100%;
+        border-radius: $de-border-radius;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: $de-border-radius;
+            z-index: -1;
+            background: $de-gradient-dark;
+            opacity: 0.1;
+        }
+        &.de-overall-card-left {
+            background-color: rgba($color: $de-primary-color, $alpha: 0.2);
+            .de-overall-stats-item {
+                .label {
+                    display: flex;
+                    align-items: center;
+                    @include de-subtitle-text();
+                    margin-bottom: $de-spacer;
+                    span {
+                        opacity: 0.7;
+                    }
+                    svg {
+                        width: $de-icon-sm-width;
+                        height: $de-icon-sm-height;
+                        margin-right: 6px;
+                    }
+                }
+                .value {
+                    font-family: $de-font-family-barlow;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 36px;
+                    line-height: 32px;
+                    color: $de-text-color;
+                    &.gold {
+                        color: $de-state-color-gold;
+                    }
+                }
+            }
+        }
+        &.de-overall-card-right {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            background-color: rgba($color: $de-secondary-color, $alpha: 0.2);
+            .de-token-earned {
+                .icon {
+                    width: 32px;
+                    height: 32px;
+                    margin-bottom: 4px;
+                    position: relative;
+                    &::before {
+                        width: 25px;
+                        height: 25px;
+                        top: 12px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        position: absolute;
+                        content: "";
+                        background: $de-background-color;
+                        mix-blend-mode: multiply;
+                        opacity: 0.2;
+                        filter: blur(15px);
+                    }
+                }
+                .value {
+                    font-family: $de-font-family-barlow;
+                    font-size: 48px;
+                    line-height: 58px;
+                    color: $de-text-color;
+                    margin-bottom: 6px;
+                }
+                .label {
+                    @include de-title-text(0.5);
+                }
+            }
+        }
+    }
+}
+
+// My Teams
+.de-card-my-team {
+    .de-my-teams {
+        max-height: 295px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 5px;
+            background-color: #1b397563;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #1b3975;
+        }
+        .de-team-md-card {
+            margin-bottom: 32px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// Upcoming
+.de-card-upcoming {
+    position: relative;
+    .de-card-header {
+        z-index: 3;
+        position: relative;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        background: -webkit-gradient( linear, right top, left top, from(#0e0422), to(rgba(14, 4, 34, 0)));
+        background: linear-gradient(270deg, #0e0422 0%, rgba(14, 4, 34, 0) 100%);
+        width: 472px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .de-matches-slide {
+        .swiper-slide {
+            width: auto;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+%fontbase {
+    font-family: $de-font-family-barlow;
+    color: $de-text-color;
+}
+
+h1 {
+    @extend %fontbase;
+    @include font-size($de-h1-font-size);
+    font-weight: $de-h1-font-weight;
+    line-height: $de-h1-line-height;
+    letter-spacing: $de-h1-letter-spacing;
+}
+
+h2 {
+    @extend %fontbase;
+    @include font-size($de-h2-font-size);
+    font-weight: $de-h2-font-weight;
+    line-height: $de-h2-line-height;
+    letter-spacing: $de-h2-letter-spacing;
+}
+
+h3 {
+    @extend %fontbase;
+    @include font-size($de-h3-font-size);
+    font-weight: $de-h3-font-weight;
+    line-height: $de-h3-line-height;
+    letter-spacing: $de-h3-letter-spacing;
+}
+
+h4 {
+    @extend %fontbase;
+    @include font-size($de-h4-font-size);
+    font-weight: $de-h4-font-weight;
+    line-height: $de-h4-line-height;
+    letter-spacing: $de-h4-letter-spacing;
+}
+
+h5 {
+    @extend %fontbase;
+    @include font-size($de-h5-font-size);
+    font-weight: $de-h5-font-weight;
+    line-height: $de-h5-line-height;
+    letter-spacing: $de-h5-letter-spacing;
+}
+
+h6 {
+    @extend %fontbase;
+    @include font-size($de-h6-font-size);
+    font-weight: $de-h6-font-weight;
+    line-height: $de-h6-line-height;
+    letter-spacing: $de-h6-letter-spacing;
+}
+
+body {
+    @include de-normal-text();
+}
+
+.de-subtitle {
+    @include de-subtitle-text();
+}

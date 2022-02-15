@@ -1,0 +1,18 @@
+.de-gradient-border {
+    border: auto;
+}
+
+.de-fade {
+    @include transition($de-transition-fade);
+    &:not(.show) {
+        opacity: 0;
+    }
+}
+
+.de-transition {
+    @include transition($de-transition-default);
+}
+
+.de-shadow-box {
+    @include transition($de-box-shadow-default);
+}

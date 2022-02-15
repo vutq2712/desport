@@ -1,0 +1,88 @@
+.de-livestream {
+    &.vertical {
+        .de-livestream-info {
+            margin-top: 40px;
+        }
+    }
+    .de-livestream-preview {
+        height: 100%;
+        min-height: 360px;
+        position: relative;
+        border-radius: $de-border-radius;
+        overflow: hidden;
+        &::before {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            content: "";
+            z-index: 2;
+            background: linear-gradient( 180deg, rgba(29, 31, 34, 0.0001) 80.33%, rgba(27, 29, 33, 0.900787) 98.62%);
+        }
+        img {
+            z-index: 1;
+        }
+        .de-btn-play {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba($color: $de-background-color, $alpha: 0.8);
+            mix-blend-mode: normal;
+            border-radius: 8px;
+            box-shadow: none;
+            outline: none;
+            transition: $de-transition-default;
+            border: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            svg {
+                transform-origin: center center;
+                transition: $de-transition-default;
+            }
+            &:hover {
+                background-color: rgba($color: $de-background-color, $alpha: 1);
+                svg {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+    .de-livestream-info {
+        height: 100%;
+        a {
+            text-decoration: none;
+        }
+        .de-livestream-tag {
+            margin-bottom: 24px;
+            span {
+                padding: 4px 10px 6px 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            }
+        }
+        .de-livestream-category {
+            margin-bottom: $de-spacer;
+            @include de-normal-text(0.6);
+            text-transform: uppercase;
+        }
+        .de-livestream-title {
+            margin-bottom: 24px;
+            line-height: 44px;
+        }
+        .de-livestream-meta {
+            display: flex;
+            flex-direction: column;
+            .de-sub-info {
+                margin-bottom: 12px;
+                span {
+                    color: rgba($color: $de-text-color, $alpha: 0.6);
+                }
+            }
+        }
+    }
+}

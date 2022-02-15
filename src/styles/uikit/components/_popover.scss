@@ -1,0 +1,19 @@
+.de-popover {
+    background: $de-border-color;
+    backdrop-filter: blur(60px);
+    border-radius: $de-border-radius;
+    width: 537px;
+    max-width: 100%;
+    .popover-body {
+        padding: 32px 32px 20px 32px;
+    }
+    &.bs-popover-top>.popover-arrow::after,
+    &.bs-popover-auto[data-popper-placement^=top]>.popover-arrow::after {
+        border-top-color: $de-border-color;
+    }
+    .de-popover-team-heading {
+        @include de-title-text;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,8 @@
+.de-ts-create-bracket {
+    .de-form-sub-title {
+        @include de-title-text(0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+    }
+}

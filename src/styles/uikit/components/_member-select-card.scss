@@ -1,0 +1,54 @@
+.de-member-select-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px 16px 16px;
+    background-color: transparent;
+    border-radius: $de-border-radius;
+    margin-bottom: 12px;
+    transition: $de-transition-default;
+    border: 1px transparent solid;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:nth-child(2n) {
+        background: rgba(139, 92, 228, 0.1);
+    }
+    &.selected {
+        border: 1px solid $de-primary-color;
+    }
+    .member-select-logo {
+        @include de-image-icon(40px, 12px);
+        border-radius: 50%;
+    }
+    .member-select-info {
+        width: calc(100% - 52px - 136px - 24px - 40px);
+        .member-select-name {
+            display: flex;
+            align-items: center;
+            @include de-title-text();
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .member-select-label {
+            @include de-subtitle-text(0.5);
+            margin-top: $de-spacer;
+        }
+    }
+    .member-select-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(136px + 24px + 40px);
+        .de-form-check-input {
+            margin: 0;
+            position: relative;
+            inset: 0;
+            width: 19px;
+            height: 19px;
+        }
+    }
+}

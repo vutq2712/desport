@@ -1,0 +1,39 @@
+.de-sub-info-2 {
+    display: inline-flex;
+    align-items: center;
+    font-family: $de-font-family-barlow;
+    color: $de-text-color;
+    img,
+    svg {
+        width: $de-icon-sm-width !important;
+        height: $de-icon-sm-width !important;
+        margin-right: 4px;
+    }
+    b {
+        @include de-title-lg-text;
+        font-weight: 500;
+        margin-right: 4px;
+        white-space: nowrap;
+    }
+    span {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        padding-top: 5px;
+        white-space: nowrap;
+    }
+    &.text-orange {
+        b,
+        span {
+            color: $de-gradient-orange;
+        }
+    }
+    &.solid {
+        &.bg-orange {
+            background: $de-gradient-orange;
+            padding: 4px 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+        }
+    }
+}

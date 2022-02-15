@@ -1,0 +1,8 @@
+@mixin de-small-text( $opacity: 1, $color: $de-text-color, $letter_spacing: $de-small-letter-spacing) {
+    font-family: $de-font-family-barlow;
+    font-size: $de-small-font-size;
+    font-weight: $de-small-font-weight;
+    line-height: $de-small-line-height;
+    letter-spacing: $letter_spacing;
+    color: rgba($color, $opacity);
+}

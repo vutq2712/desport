@@ -1,0 +1,13 @@
+.de-sidebar-tab {
+    display: flex;
+    align-items: center;
+    @include de-title-lg-text;
+    text-decoration: none;
+    transition: $de-transition-default;
+    &:hover {
+        color: $de-secondary-color;
+    }
+    .de-sidebar-tab-icon {
+        @include de-image-icon($de-icon-width, 16px);
+    }
+}

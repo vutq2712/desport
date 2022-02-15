@@ -1,0 +1,83 @@
+.de-medium-card {
+    margin-bottom: 32px;
+    >a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        &:hover {
+            .de-medium-card-image {
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+                filter: drop-shadow(0px 4px 40px rgba(85, 25, 199, 0.5));
+                background: $de-white-color;
+            }
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .de-medium-card-image {
+        border-radius: $de-border-radius;
+        position: relative;
+        transition: $de-transition-default;
+        padding: 1px;
+        background: $de-gradient-border;
+        margin-right: 24px;
+        .de-medium-card-image-inner {
+            border-radius: $de-border-radius;
+            @include de-image-icon(204px, 0);
+            .de-sub-info-2 {
+                position: absolute;
+                bottom: 12px;
+                left: 12px;
+                z-index: 2;
+            }
+        }
+        &::before {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            content: "";
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            border: $de-border-radius;
+            background: $de-gradient-dark;
+            mix-blend-mode: multiply;
+            opacity: 0.5;
+            border-radius: 8px;
+            z-index: 1;
+        }
+    }
+    .de-medium-card-info {
+        .de-medium-card-tags {
+            margin-bottom: 16px;
+            .de-tag {
+                margin-right: $de-spacer;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .de-medium-card-category {
+            opacity: 0.6;
+            margin-bottom: $de-spacer;
+            color: $de-text-color;
+        }
+        .de-medium-card-title {
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 16px;
+            color: $de-text-color;
+            @include text-ellipsis(2);
+        }
+        .de-medium-card-meta {
+            display: flex;
+            flex-direction: column;
+            .de-sub-info {
+                margin-bottom: $de-spacer;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.de-attending-team {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .de-attending-team-logo {
+        margin-bottom: 24px;
+        @include de-image-icon(72px, 0);
+    }
+    .de-attending-team-name {
+        @include de-heading-text();
+        font-size: 14px;
+        line-height: 125%;
+        color: $de-text-color;
+    }
+}

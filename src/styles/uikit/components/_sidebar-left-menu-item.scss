@@ -1,0 +1,18 @@
+.de-sidebar-menu-item {
+    padding: 20px;
+    a {
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        img {
+            width: 40px;
+            transform-origin: center center;
+            transition: $de-transition-default;
+        }
+        &:hover {
+            img {
+                transform: scale(1.3);
+            }
+        }
+    }
+}

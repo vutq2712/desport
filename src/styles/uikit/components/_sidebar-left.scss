@@ -1,0 +1,47 @@
+.de-sidebar-left {
+    width: $de-sidebar-left-width;
+    background: $de-gradient-dark;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 995;
+    border-right: 1px rgba($color: $de-border-color, $alpha: 0.8) solid;
+    .de-sidebar-left-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 38px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        .de-logo {
+            margin-bottom: 80px;
+        }
+        .de-sidebar-game {
+            max-height: calc(100vh - 210px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            .de-sidebar-game-heading {
+                border-bottom: 1px solid rgba($color: $de-border-color, $alpha: 0.8);
+                padding-bottom: 20px;
+            }
+            ul {
+                padding-left: 0;
+                list-style: none;
+                margin-bottom: 0;
+            }
+        }
+        .copyright {
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0.5;
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+        }
+    }
+}

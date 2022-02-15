@@ -1,0 +1,6 @@
+.de-wallet-address {
+    background: $de-border-color;
+    border-radius: 2px;
+    @include de-subtitle-text(0.7);
+    padding: 1px 3px;
+}

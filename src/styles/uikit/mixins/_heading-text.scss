@@ -1,0 +1,5 @@
+@mixin de-heading-text() {
+    font-family: $de-font-family-heading;
+    font-weight: 400;
+    text-transform: uppercase;
+}

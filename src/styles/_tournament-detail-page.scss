@@ -1,0 +1,19 @@
+@import "./tournament-detail/overview";
+@import "./tournament-detail/livestream";
+@import "./tournament-detail/bracket";
+@import "./tournament-detail/team";
+@import "./tournament-detail/contribute";
+@import "./tournament-detail/register";
+.tournament-detail {
+    background-image: url(/assets/images/premium-bg.png);
+    background-position: top 130px right -40px;
+    background-repeat: no-repeat;
+    .de-card {
+        .de-card-header {
+            .de-card-title {
+                text-transform: uppercase;
+                color: $de-text-color;
+            }
+        }
+    }
+}

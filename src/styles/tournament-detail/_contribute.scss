@@ -1,0 +1,72 @@
+.de-contribute-tab {
+    margin-bottom: 88px;
+    table {
+        tr {
+            th {
+                font-weight: 500;
+                white-space: nowrap;
+                padding: 24px;
+                color: rgba($color: $de-text-color, $alpha: 0.5);
+            }
+            td {
+                padding: 16px 24px;
+                letter-spacing: 1px;
+                &:first-child {
+                    font-size: 14px;
+                    font-weight: bold;
+                    letter-spacing: normal;
+                }
+                img {
+                    filter: drop-shadow(0px 0px 10px rgba(0, 237, 242, 0.3));
+                }
+                span {
+                    svg {
+                        margin-left: 8px;
+                    }
+                    &.silver {
+                        color: #b1b7e1;
+                    }
+                    &.gold {
+                        color: $de-state-color-gold;
+                    }
+                    &.bronze {
+                        color: #954000;
+                    }
+                }
+            }
+        }
+    }
+    .de-contribute-benefit {
+        @include de-title-text(1, $de-secondary-color, uppercase, 1px);
+        margin-bottom: 24px;
+    }
+    button.form-select {
+        text-align: right;
+        background-color: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-position: right center;
+        padding-right: 24px;
+        transition: $de-transition-default;
+        &:hover {
+            color: $de-primary-color;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238B5CE4' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        }
+    }
+    .select-dropdown {
+        border-radius: 4px;
+        background-color: #1F064D;
+        ul {
+            li {
+                color: $de-text-color;
+                transition: $de-transition-default;
+                justify-content: flex-end;
+                &:hover {
+                    color: $de-primary-color;
+                    background-color: rgba(139, 92, 228, 0.1);
+                }
+            }
+        }
+    }
+}

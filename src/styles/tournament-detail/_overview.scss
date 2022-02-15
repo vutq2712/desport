@@ -1,0 +1,144 @@
+.tournament-overview {
+    margin-bottom: 88px;
+    .de-card {
+        .de-card-header {
+            margin-bottom: 24px;
+        }
+        &:last-child {
+            margin-bottom: 40px;
+        }
+    }
+    .tournament-overview-description {
+        @include de-normal-text();
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 170%;
+    }
+}
+
+.tournament-section-title {
+    @include de-title-lg-text(1);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.tournament-contributors,
+.tournament-sponsors {
+    margin-bottom: 88px;
+}
+
+.de-card-highlight {
+    position: relative;
+    background: $de-secondary-color;
+    &::before,
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        border-radius: $de-border-radius;
+    }
+    &::before {
+        background: $de-gradient-blue;
+        opacity: 0.6;
+        z-index: 1;
+    }
+    &::after {
+        background: $de-gradient-dark;
+        opacity: 0.5;
+        z-index: 2;
+    }
+    .de-card-header,
+    .de-card-body {
+        position: relative;
+        z-index: 3;
+    }
+    .de-card-header {
+        margin-bottom: 4px;
+    }
+    .tournament-prize-pool,
+    .tournament-prize-sponsors,
+    .tournament-prize-crowdfund {
+        display: flex;
+        align-items: center;
+    }
+    .tournament-prize-label {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: $de-text-color;
+        opacity: 0.7;
+        margin-bottom: $de-spacer;
+    }
+    .tournament-prize-pool {
+        margin-bottom: 30px;
+        span {
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 58px;
+            color: $de-state-color-gold;
+        }
+        svg {
+            margin-left: 12px;
+        }
+    }
+    .tournament-prize-sponsors {
+        margin-bottom: 24px;
+    }
+    .tournament-prize-sponsors,
+    .tournament-prize-crowdfund {
+        span {
+            font-size: 36px;
+            line-height: 32px;
+            color: $de-text-color;
+        }
+        svg {
+            margin-left: $de-spacer;
+        }
+    }
+}
+
+.tournament-prize {
+  .tournament-prize-distribution-wrap {
+    max-height: 460px;
+    overflow: auto;
+  }
+}
+
+.tournament-attending-teams {
+    position: relative;
+    .de-card-header {
+        z-index: 3;
+        position: relative;
+    }
+    &::before {
+        position: absolute;
+        content: "";
+        background: -webkit-gradient( linear, right top, left top, from(#0e0422), to(rgba(14, 4, 34, 0)));
+        background: linear-gradient(270deg, #0e0422 0%, rgba(14, 4, 34, 0) 100%);
+        width: 472px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .de-attending-teams-slide {
+        .swiper-slide {
+            width: auto;
+        }
+    }
+}
+.de-all-teams {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    & a {
+        flex: 0 0 16%;
+        & .de-team-sm-card {
+            margin: auto;
+        }
+    }
+}

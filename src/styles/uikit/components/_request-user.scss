@@ -1,0 +1,26 @@
+.de-request-user {
+    display: flex;
+    align-items: center;
+    .requester-avatar {
+        @include de-image-icon(40px, 12px);
+        border-radius: 50%;
+    }
+    .requester-name {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        text-transform: capitalize;
+        color: $de-text-color;
+    }
+}
+
+.de-request-action {
+    text-align: right;
+    a {
+        margin-left: 12px;
+        text-decoration: none;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}

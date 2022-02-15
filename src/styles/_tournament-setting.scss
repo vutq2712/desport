@@ -1,0 +1,77 @@
+.de-tournament-setting-header {
+    margin-top: 40px;
+    margin-bottom: 32px;
+    .tournament-setting-card {
+        display: flex;
+        .tournament-setting-image-wrap {
+            width: 120px;
+            height: 120px;
+            margin-right: 32px;
+            background: linear-gradient(145.71deg, rgba(255, 255, 255, 0) 23.52%, rgba(255, 255, 255, 0.7) 56.35%, #2E1069 67.57%);
+            padding: 1px;
+            border-radius: $de-border-radius;
+        }
+        .tournament-setting-image {
+            @include de-image-icon(118px, 0);
+            border-radius: $de-border-radius;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                border-radius: $de-border-radius;
+                background: linear-gradient(195.81deg, rgba(31, 33, 40, 0) 32.97%, #1A0544 75.98%);
+                mix-blend-mode: multiply;
+                opacity: 0.5;
+                z-index: -1;
+            }
+        }
+        .tournament-setting-info {
+            width: calc(100% - 152px);
+            h4 {
+                margin-top: 12px;
+                margin-bottom: 12px;
+            }
+            h1 {
+                margin-bottom: 0;
+                @include de-heading-text();
+                font-size: 52px;
+                line-height: 100%;
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+
+.de-tournament-setting-menu {
+    border-bottom: 1px solid rgba($color: $de-border-color, $alpha: 0.5);
+    margin-bottom: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 993;
+    background-color: $de-background-color;
+    .de-top-navigation {
+        justify-content: flex-start
+    }
+    .de-category-tab-item {
+        @include de-flat-button;
+        &.active {
+            &::before {
+                bottom: -2px;
+                background-image: url(./uikit/media/images/tab-hover.png);
+                height: 16px;
+                max-height: 16px;
+                background-size: 100% 16px;
+            }
+        }
+    }
+}
+
+@import "./tournament-setting/info-detail";
+@import "./tournament-setting/list-bracket";
+@import "./tournament-setting/create-bracket";
+@import "./tournament-setting/dashboard";
+@import "./tournament-setting/bracket-preview";

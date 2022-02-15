@@ -1,0 +1,132 @@
+.de-my-wallet-right-card {
+    padding: 30px 40px;
+    background: rgba(21, 3, 60, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: $de-border-radius;
+    .de-right-card-title {
+        @include de-title-text(0.5);
+        margin-bottom: 24px;
+    }
+    .de-right-card-tabs {
+        margin-bottom: 32px;
+        .de-right-card-tab {
+            margin-right: 12px;
+            padding: 8px 12px;
+            @include de-normal-text();
+            border: 1px solid $de-border-color;
+            box-sizing: border-box;
+            border-radius: 4px;
+            transition: $de-transition-default;
+            background-color: transparent;
+            &:hover,
+            &.active {
+                background-color: $de-border-color;
+                color: $de-text-color;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.de-tournament-detail {
+    margin-top: -22px;
+}
+
+.de-tournament-banner {
+    background-image: url(/assets/images/tournament-banner.png);
+    min-height: 490px;
+    background-size: cover;
+    background-position: top center;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 60px;
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0px;
+        left: 0;
+    }
+    &::before {
+        background: radial-gradient( 74.95% 74.95% at 50% 11.56%, rgba(31, 33, 40, 0) 0%, rgba(25, 13, 48, 0.73) 74.53%, #190d30 100%);
+        background-blend-mode: soft-light;
+        z-index: 1;
+    }
+    &::after {
+        z-index: 2;
+        background: linear-gradient( 5.83deg, rgba(119, 62, 227, 0) 22.78%, #142186 122.44%, #1f2128 158.92%);
+        background-blend-mode: soft-light;
+        opacity: 0.7;
+    }
+    .de-tournament-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 3;
+        padding: 306px 64px 0 64px;
+        background: linear-gradient( 180deg, rgba(14, 4, 34, 0) 5.47%, rgba(14, 4, 34, 0.73) 65.87%, #0e0422 86.51%);
+        .de-tournament-header {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 40px;
+            left: 0;
+            z-index: 4;
+        }
+        .de-tournament-body {
+            margin-bottom: 10px;
+            h4 {
+                font-weight: 300;
+                font-size: 24px;
+                line-height: 32px;
+                color: $de-text-color;
+                margin-bottom: 12px;
+            }
+            h1 {
+                @include de-heading-text();
+                font-size: 52px;
+                line-height: 100%;
+                letter-spacing: 2px;
+                color: $de-text-color;
+                margin-bottom: 20px;
+            }
+            .de-tournament-tags {
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .de-tournament-meta {
+                display: flex;
+                align-items: center;
+                margin-bottom: 32px;
+                .de-tournament-game {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 32px;
+                    img,
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+            .de-sub-info-2 {
+                display: inline-flex;
+                align-items: center;
+                padding: 6px 10px;
+                background: $de-gradient-orange;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+                border-radius: $de-border-radius;
+                margin-right: 12px;
+            }
+        }
+    }
+}

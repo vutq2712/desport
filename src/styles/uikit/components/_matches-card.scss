@@ -1,0 +1,98 @@
+.de-matches-card {
+    width: 265px;
+    &.single {
+        width: 180px;
+        .de-matches-card-inner {
+            width: 158px;
+            margin-left: auto;
+            margin-right: auto;
+            .de-matches-card-body {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+    .de-matches-card-inner {
+        border-radius: 8px;
+        padding: 1px;
+        background: $de-gradient-border;
+        margin-bottom: 16px;
+        .de-matches-card-body {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), linear-gradient(99.45deg, #5062e5 0%, #8b5ce4 100.11%);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            &::before {
+                width: 35px;
+                height: 124px;
+                background-image: url(../media/images/separator.png);
+                background-position: top center;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .de-matches-left {
+                padding: 16px 32px 16px 12px;
+                width: 50%;
+            }
+            .de-matches-right {
+                padding: 16px 12px 16px 32px;
+                width: 50%;
+            }
+            .de-matches-single {
+                padding: 12px 32px;
+                width: 100%;
+                .de-matches-single-title {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-align: center;
+                    color: $de-primary-color;
+                    margin-bottom: 16px;
+                }
+                .de-matches-name {
+                    margin-bottom: 0;
+                }
+            }
+            .de-matches-logo {
+                margin-bottom: 12px;
+                text-align: center;
+                img {
+                    height: 40px;
+                }
+            }
+            .de-matches-name {
+                @include de-heading-text();
+                font-size: 14px;
+                line-height: 125%;
+                text-align: center;
+                color: $de-text-color;
+                margin-bottom: 16px;
+            }
+        }
+    }
+    .de-matches-card-footer {
+        .de-matches-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include de-normal-text();
+            margin-bottom: 8px;
+            img,
+            svg {
+                width: $de-icon-sm-width;
+                height: $de-icon-sm-width;
+                margin-right: $de-spacer;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

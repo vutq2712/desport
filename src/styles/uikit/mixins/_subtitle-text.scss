@@ -1,0 +1,8 @@
+@mixin de-subtitle-text( $opacity: 1, $color: $de-text-color, $letter_spacing: $de-subtitle-letter-spacing) {
+    font-family: $de-font-family-barlow;
+    font-size: $de-subtitle-font-size;
+    font-weight: $de-subtitle-font-weight;
+    line-height: $de-subtitle-line-height;
+    letter-spacing: $letter_spacing;
+    color: rgba($color, $opacity);
+}

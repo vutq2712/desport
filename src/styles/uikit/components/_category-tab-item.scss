@@ -1,0 +1,32 @@
+.de-category-tab-item {
+    position: relative;
+    padding: 16px 48px;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-size: 100% 33px;
+        background-position: bottom 1px center;
+        background-image: url(../media/images/menu-hover.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 33px;
+        z-index: -1;
+        max-height: 0;
+        overflow: hidden;
+        @include transition($de-transition-default);
+    }
+    &:hover {
+        font-weight: 600;
+    }
+    &.active {
+        font-weight: 600;
+        &::before {
+            max-height: 33px;
+        }
+    }
+}

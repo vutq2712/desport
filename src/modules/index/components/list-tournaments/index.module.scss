@@ -1,0 +1,19 @@
+.de_slide {
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    position: relative;
+    &::before {
+        position: absolute;
+        content: '';
+        background: linear-gradient(270deg, #0E0422 0%, rgba(14, 4, 34, 0) 100%);
+        width: 472px;
+        height: 100%;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+}

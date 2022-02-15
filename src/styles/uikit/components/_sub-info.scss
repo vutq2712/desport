@@ -1,0 +1,25 @@
+.de-sub-info {
+    display: inline-flex;
+    align-items: center;
+    @include de-subtitle-text();
+    span {
+        opacity: 0.6;
+    }
+    img,
+    svg {
+        width: $de-icon-sm-width;
+        height: $de-icon-sm-width;
+        margin-right: $de-spacer;
+    }
+    &.lg {
+        @include de-normal-text();
+        span {
+            opacity: 1;
+        }
+        img,
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

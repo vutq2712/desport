@@ -1,0 +1,54 @@
+.de-tag {
+    @include de-subtitle-text();
+    background: $de-primary-color;
+    border-radius: $de-border-radius-sm;
+    color: $de-white-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    &.gradient {
+        background: $de-gradient-orange;
+        border-radius: $de-border-radius;
+        padding: 4px 10px 6px;
+        @include de-title-lg-text;
+        svg {
+            width: $de-icon-sm-width;
+            height: $de-icon-sm-height;
+            margin-right: 4px;
+        }
+    }
+    &.gradient-solid {
+        background: linear-gradient(101.86deg, #DF9344 0%, #D16211 100%);
+    }
+    &.dark {
+        background: $de-border-color;
+    }
+    &.success {
+        background: $de-success-color;
+    }
+    &.primary {
+        background: $de-primary-color;
+    }
+    &.secondary {
+        background: $de-secondary-color;
+    }
+    &.warning {
+        background: $de-state-color-orange;
+    }
+    &.live {
+        background: #E55098;
+        padding: 2px 10px 4px;
+        svg {
+            margin-right: 4px;
+        }
+    }
+    &.de-tag-user {
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        padding: 4px 6px;
+        font-size: 11px;
+        line-height: 13px;
+        letter-spacing: 0.5px;
+    }
+}

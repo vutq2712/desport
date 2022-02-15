@@ -1,0 +1,219 @@
+.de-game-tabs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    margin-bottom: 56px;
+    .de-btn {
+        padding: 7.5px 12px;
+        height: 40px;
+        border-radius: 4px;
+        svg {
+            margin-right: 6px;
+            margin-left: 0;
+        }
+    }
+}
+
+.de-game-add-account {
+    display: flex;
+    align-items: flex-end;
+    border: 0;
+    width: 100%;
+    @include de-flat-button;
+    padding: 0;
+    .de-btn-add-account {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135.38deg, $de-secondary-color 0%, #0049C6 100%);
+        border-radius: $de-border-radius;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        @include de-normal-text();
+        margin-right: 24px;
+        position: relative;
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: $de-border-radius;
+            top: 0;
+            left: 0;
+            position: absolute;
+            opacity: 0;
+            background-color: $de-black-color;
+            transition: $de-transition-default;
+        }
+        &:hover {
+            &::before {
+                opacity: .2;
+            }
+        }
+        svg,
+        span {
+            position: relative;
+        }
+        svg {
+            margin-bottom: 6px;
+        }
+    }
+    .de-game-add-placeholder {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: calc(100% - 150px - 24px);
+        height: 100%;
+        .username-placeholder {
+            background: rgba($color: $de-secondary-color, $alpha: 0.2);
+            border-radius: $de-border-radius;
+            margin-bottom: 16px;
+            height: 32px;
+            width: 191px;
+        }
+        .stats-placeholder {
+            width: 100%;
+            height: 72px;
+            position: relative;
+            border-radius: $de-border-radius;
+            background: rgba($color: $de-secondary-color, $alpha: 0.2);
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: $de-gradient-dark;
+                opacity: 0.1;
+                border-radius: $de-border-radius;
+            }
+        }
+    }
+}
+
+// Modal connect account
+.connect-description {
+    padding-top: 4px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include de-subtitle-text();
+    span {
+        opacity: 0.6;
+        &.active {
+            opacity: 1;
+            margin-right: 12px;
+        }
+    }
+    svg {
+        margin-right: 6px;
+    }
+}
+
+.games-list {
+    margin-right: -10px;
+    padding-right: 10px;
+    height: 274px;
+    margin-bottom: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+    &:hover {
+        &::-webkit-scrollbar {
+            background-color: #1b397563;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #1b3975;
+        }
+    }
+    .connect-games {
+        .row {
+            --bs-gutter-x: 12px;
+        }
+        .connect-game-button {
+            width: 100%;
+            margin-bottom: 12px;
+            @include de-flat-button;
+            border: 1px solid $de-border-color;
+            box-sizing: border-box;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 12px 8px 8px 8px;
+            transition: $de-transition-default;
+            &:hover,
+            &.active {
+                background-color: $de-border-color;
+                border: 1px solid $de-border-color;
+            }
+            .logo {
+                margin-bottom: 6px;
+                @include de-image-icon(32px, 0);
+            }
+            .name {
+                @include de-normal-text();
+            }
+        }
+    }
+}
+
+// Modal add account
+.connect-guide {
+    .connect-guide-item {
+        display: flex;
+        margin-bottom: 16px;
+        svg {
+            width: 16px;
+            min-width: 16px;
+            margin-right: 6px;
+        }
+        span {
+            @include de-normal-text();
+        }
+    }
+}
+
+// Connected modal
+.connected-message {
+    padding-top: 4px;
+    padding-bottom: 52px;
+    @include de-normal-text();
+    h2 {
+        font-family: $de-font-family-barlow;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 32px;
+        color: $de-text-color;
+        margin-bottom: 10px;
+    }
+}
+
+// AddYour Account
+.connect-game-info {
+    padding-top: 45px;
+    padding-bottom: 55px;
+    @include de-normal-text();
+    img {
+        margin-bottom: 24px;
+    }
+    h4 {
+        margin-bottom: 10px;
+        font-family: $de-font-family-barlow;
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 32px;
+        color: $de-text-color;
+    }
+}

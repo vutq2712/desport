@@ -1,0 +1,22 @@
+.de-game-tab {
+    padding: 7px 12px;
+    height: 40px;
+    border-radius: $de-border-radius-sm;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    transition: $de-transition-default;
+    @include de-flat-button;
+    border: 1px solid $de-border-color;
+    box-sizing: border-box;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover,
+    &.active {
+        background: $de-border-color;
+        .logo {
+            background-color: $de-background-color;
+        }
+    }
+}

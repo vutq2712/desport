@@ -1,0 +1,19 @@
+.de-game-small-card {
+    display: inline-flex;
+    align-items: center;
+    &.bordered {
+        padding: 7px 12px;
+        height: 40px;
+        border: 1px solid $de-border-color;
+        box-sizing: border-box;
+        border-radius: $de-border-radius-sm;
+    }
+    .logo {
+        background-color: $de-border-color;
+        border-radius: $de-border-radius-sm;
+        @include de-image-icon($de-icon-width, 12px);
+    }
+    .name {
+        @include de-normal-text();
+    }
+}

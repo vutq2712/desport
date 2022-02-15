@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  desports_fe:
+    container_name: desports_fe
+    #ports:
+    #  - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - .env
+      - .env.production
+    network_mode: host

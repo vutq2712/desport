@@ -1,0 +1,13 @@
+.de-livestream-tab {
+    padding-top: 38px;
+    margin-bottom: 20px;
+    .de-card {
+        padding: 32px 40px;
+        .de-card-header {
+            .de-card-title {
+                color: $de-text-color;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

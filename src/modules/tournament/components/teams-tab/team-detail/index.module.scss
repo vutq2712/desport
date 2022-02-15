@@ -1,0 +1,47 @@
+.deTeamDetail {
+    margin-top: -56px;
+    margin-bottom: 88px;
+    .deTeamName {
+        font-family: Elianto;
+        font-size: 24px;
+        line-height: 125%;
+        color: #FFFFFF;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .deTeamStats {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: center;
+        .deTeamStat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 16px;
+            .deTeamTag {
+                margin-bottom: 6px;
+                text-transform: uppercase;
+                padding: 4px 6px;
+                font-size: 11px;
+                line-height: 13px;
+                letter-spacing: 0.5px;
+            }
+            .deTeamMembers {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 19px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .deTeamCaptain {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 19px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #E59C50;
+            }
+        }
+    }
+    .deTeamMemberList {}
+}

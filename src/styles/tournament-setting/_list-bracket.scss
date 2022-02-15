@@ -1,0 +1,84 @@
+.de-ts-list-bracket {
+    padding-bottom: 58px;
+    .de-ts-list-bracket-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .de-ts-cat-tab {
+        margin-right: 12px;
+        padding: 8px 12px;
+        @include de-normal-text();
+        border: 1px solid $de-border-color;
+        box-sizing: border-box;
+        border-radius: 4px;
+        transition: $de-transition-default;
+        background-color: transparent;
+        &:hover,
+        &.active {
+            background-color: $de-border-color;
+            color: $de-text-color;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .de-bracket-title {
+        margin-bottom: 0;
+        margin-right: 12px;
+        font-weight: 500;
+    }
+    .de-bracket-status {
+        label {
+            color: $de-primary-color;
+            margin-right: $de-spacer;
+        }
+    }
+    .de-bracket-time {
+        svg {
+            margin-right: $de-spacer;
+        }
+    }
+    .de-bracket-meta {
+        svg {
+            margin-right: $de-spacer;
+        }
+        label {
+            color: $de-primary-color;
+            margin-right: $de-spacer;
+        }
+    }
+    table {
+        margin-bottom: 0;
+        tr {
+            th {
+                font-weight: 500;
+                white-space: nowrap;
+                padding: 24px;
+                color: rgba($color: $de-text-color, $alpha: 0.5);
+            }
+            td {
+                .de-btn {
+                    text-transform: capitalize;
+                    &.de-btn-link {
+                        color: $de-secondary-color;
+                        &:hover {
+                            color: $de-primary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .de-btn {
+        padding-left: 12px;
+        padding-right: 14px;
+        &::before {
+            display: none;
+        }
+        svg {
+            margin-left: 8px;
+        }
+    }
+}

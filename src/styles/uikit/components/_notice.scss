@@ -1,0 +1,11 @@
+.de-notice {
+    display: flex;
+    align-items: center;
+    @include de-normal-text(1, $de-state-color-gold);
+    margin-bottom: 24px;
+    svg {
+        width: $de-icon-width;
+        height: $de-icon-height;
+        margin-right: 8px;
+    }
+}

@@ -1,0 +1,31 @@
+// Avatar
+.de-profile-avatar {
+    text-align: center;
+    padding-top: 32px;
+    .de-profile-avatar-preview {
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-bottom: 26px;
+        @include de-image-icon(160px);
+    }
+}
+
+// Linked Accounts
+.de-profile-accounts {
+    .de-profile-account {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        .de-profile-account-logo {
+            @include de-image-icon(32px, 12px);
+        }
+        .de-profile-account-name {
+            @include de-normal-text();
+            margin-right: 12px;
+        }
+        .de-profile-account-username {
+            @include de-normal-text(0.5);
+            line-height: 14px;
+        }
+    }
+}

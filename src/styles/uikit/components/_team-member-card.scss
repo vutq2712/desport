@@ -1,0 +1,62 @@
+.de-team-member-card {
+    padding: 20px 24px;
+    border: 1px solid $de-border-color;
+    box-sizing: border-box;
+    border-radius: $de-border-radius;
+    display: flex;
+    margin-bottom: 20px;
+    height: calc(100% - 20px);
+    .member-avatar {
+        border-radius: 50%;
+        @include de-image-icon(40px, 12px);
+    }
+    .member-info {
+        width: calc(100% - 52px);
+        .member-name {
+            @include de-normal-text();
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            span {
+                white-space: nowrap;
+                max-width: calc(100% - 16px);
+                overflow: hidden;
+                display: inline-block;
+                text-overflow: ellipsis;
+            }
+            .member-status {
+                display: inline-flex;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                margin-left: 8px;
+            }
+        }
+        .member-description {
+            @include de-subtitle-text(0.5);
+        }
+        .member-kick {
+            margin-top: $de-spacer;
+            padding-left: 0;
+            @include de-flat-button;
+            @include de-normal-text(1, $de-secondary-color);
+            transition: $de-transition-default;
+            text-decoration: none;
+            &.danger {
+                color: $de-danger-color;
+            }
+            &:hover {
+                color: $de-primary-color;
+            }
+        }
+    }
+    &.online {
+        .member-info {
+            .member-name {
+                .member-status {
+                    background-color: $de-success-color;
+                }
+            }
+        }
+    }
+}

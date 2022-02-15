@@ -1,0 +1,36 @@
+.de-form-check {
+    // input[type="checkbox"],
+    // .de-form-check-input {}
+    min-height: 0;
+    .de-form-check-label {
+        @include de-normal-text();
+        a {
+            color: $de-primary-color;
+            text-decoration: none;
+            transition: $de-transition-default;
+            &:hover {
+                color: $de-text-color;
+            }
+        }
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-top: 4px;
+        background-color: transparent;
+        border-color: $de-primary-color;
+        margin-right: 14px;
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    input[type="radio"] {
+        margin-right: 8px;
+    }
+}
+
+.de-form-check-wrap {
+    .de-form-check {
+        margin-left: 0;
+        padding-left: 0;
+    }
+}

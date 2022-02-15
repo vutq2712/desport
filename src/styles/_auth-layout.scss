@@ -1,0 +1,146 @@
+.de-auth-layout {
+    background-color: $de-background-color;
+    min-height: 100vh;
+    padding: 80px 0;
+    background-image: url(/assets/images/auth-page-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left center;
+    .de-auth-page-logo {
+        text-align: center;
+        img {
+            height: 170px;
+        }
+    }
+    .de-auth-page {
+        width: 440px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        .de-auth-page-body {
+            // height: 685px;
+            min-height: calc(100vh - 160px);
+            background: rgba(21, 3, 60, 0.6);
+            border: 1px solid $de-border-color;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            border-radius: $de-border-radius;
+            padding: 32px 40px;
+            position: relative;
+            .de-auth-form {
+                .de-auth-form-title {
+                    margin-bottom: 12px;
+                    text-align: center;
+                    @include de-title-text();
+                }
+                .de-auth-form-description {
+                    @include de-normal-text(0.4);
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+                .de-auth-form-body {
+                    .de-auth-form-forgot-link {
+                        padding-top: 4px;
+                        text-align: center;
+                        margin-bottom: 116px;
+                        a {
+                            @include de-normal-text(1, $de-secondary-color);
+                            text-align: center;
+                            text-decoration: none;
+                            transition: $de-transition-default;
+                            &:hover {
+                                color: $de-primary-color;
+                            }
+                        }
+                    }
+                    .de-auth-form-confirm {
+                        padding-top: 8px;
+                        margin-bottom: 32px;
+                    }
+                    .de-auth-form-action {
+                        margin-bottom: 16px;
+                    }
+                    .de-auth-form-footer {
+                        @include de-normal-text();
+                        text-align: center;
+                        a {
+                            color: $de-secondary-color;
+                            text-decoration: none;
+                            transition: $de-transition-default;
+                            &:hover {
+                                color: $de-text-color;
+                            }
+                        }
+                    }
+                    .de-auth-form-separator {
+                        margin-top: 40px;
+                        margin-bottom: 32px;
+                        border-top: 1px solid $de-border-color;
+                    }
+                    .de-auth-social-login {
+                        .de-auth-social-label {
+                            @include de-normal-text(0.4);
+                            text-align: center;
+                            margin-bottom: 32px;
+                        }
+                        .de-auth-social-buttons {
+                            display: flex;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                            .btn {
+                                background-color: transparent !important;
+                                border: 0;
+                                padding: 0;
+                                transform-origin: center center;
+                                transition: $de-transition-default;
+                                @include de-image-icon(36px, 0);
+                                &:hover {
+                                    transform: scale(1.1);
+                                }
+                            }
+                        }
+                    }
+                    .de-auth-enter-otp {
+                        margin-top: 48px;
+                        .de-auth-enter-otp-label {
+                            @include de-normal-text();
+                            text-align: center;
+                            margin-bottom: 24px;
+                        }
+                        .de-auth-enter-otp-input {
+                            margin-top: 32px;
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            .form-control {
+                                text-align: center;
+                                margin: 0 4px;
+                                width: 48px;
+                                height: 38px;
+                                @include de-title-text();
+                            }
+                        }
+                    }
+                }
+                &.fixed-footer {
+                    .de-auth-form-action {
+                        position: absolute;
+                        bottom: 30px;
+                        left: 32px;
+                        width: calc(100% - 64px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-height:844px) {
+    .de-auth-layout {
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+}

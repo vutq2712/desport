@@ -1,0 +1,43 @@
+.de-tournament-sm-card {
+    cursor: pointer;
+    border: 1px solid $de-border-color;
+    box-sizing: border-box;
+    border-radius: $de-border-radius;
+    padding: 20px 24px;
+    display: flex;
+    margin-bottom: 24px;
+    transition: $de-transition-default;
+    &.selected {
+        border: 1px solid $de-primary-color;
+    }
+    &:last-child {
+        margin-bottom: 0
+    }
+    .tournament-sm-logo {
+        @include de-image-icon(40px, 12px);
+        border-radius: 50%;
+    }
+    .tournament-sm-info {
+        width: calc(100% - 52px);
+        display: flex;
+        flex-direction: column;
+        .tournament-sm-name {
+            margin-bottom: $de-spacer;
+            @include de-title-text(0.5, $de-text-color, uppercase, 1px);
+        }
+        .de-sub-info {
+            margin-bottom: 8px;
+            span {
+                color: rgba($color: $de-text-color, $alpha: 0.5);
+            }
+        }
+        .tournament-sm-link {
+            @include de-normal-text(1, $de-secondary-color);
+            text-decoration: none;
+            transition: $de-transition-default;
+            &:hover {
+                color: $de-primary-color;
+            }
+        }
+    }
+}

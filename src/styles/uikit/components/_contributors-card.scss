@@ -1,0 +1,86 @@
+.de-contributor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px;
+    .de-contributor-image {
+        width: 163px;
+        height: 163px;
+        border-radius: 50%;
+        padding: 4px;
+        margin-bottom: 36px;
+        background: $de-gradient-border;
+        position: relative;
+        .de-contributor-avatar {
+            background: linear-gradient( 195.81deg, rgba(31, 33, 40, 0) 32.97%, #1a0544 75.98%);
+            border-radius: 50%;
+            @include de-image-icon(100%, 0);
+        }
+    }
+    .de-contributor-rank {
+        position: absolute;
+        left: 50%;
+        bottom: -24px;
+        transform: translateX(-50%);
+        border: 6px solid $de-background-color;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .3;
+            background: $de-gradient-dark;
+            z-index: -1;
+        }
+    }
+    .de-contributor-name {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 32px;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+    .de-contributor-value {
+        display: flex;
+        align-items: center;
+        svg {
+            margin-right: 4px;
+        }
+        span {
+            @include de-normal-text;
+        }
+    }
+    &.silver {
+        .de-contributor-rank {
+            background: #B1B7E1;
+        }
+        .de-contributor-name {
+            color: #B1B7E1;
+        }
+    }
+    &.gold {
+        .de-contributor-rank {
+            background: $de-state-color-gold;
+        }
+        .de-contributor-name {
+            color: $de-state-color-gold;
+        }
+    }
+    &.bronze {
+        .de-contributor-rank {
+            background: #954000;
+        }
+        .de-contributor-name {
+            color: #954000;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@import "styles/uikit/variables";
+.de_top_navigation {
+    position: sticky;
+    top: 0;
+    z-index: 993;
+    width: 100%;
+    padding: 0;
+    background-color: #0E0422;
+    display: flex;
+    justify-content: center;
+    .de_top_navigation_menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

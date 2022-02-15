@@ -1,0 +1,52 @@
+.de-team-full-card {
+    margin-bottom: 60px;
+    .team-full-logo {
+        @include de-image-icon(70px, 0);
+        &.lg {
+            width: 96px;
+            height: 96px;
+        }
+    }
+    .team-full-name {
+        @include de-heading-text();
+        font-size: 24px;
+        line-height: 125%;
+        color: $de-text-color;
+        margin-bottom: 0;
+    }
+    .team-full-score {
+        margin-right: 40px;
+        margin-bottom: 32px;
+        &:last-child {
+            margin-right: 0;
+        }
+        .team-full-score-label {
+            @include de-subtitle-text(0.7);
+            margin-bottom: 6px;
+        }
+        .team-full-score-value {
+            font-family: $de-font-family-barlow;
+            font-size: 36px;
+            line-height: 32px;
+            color: $de-text-color;
+            svg {
+                margin-left: 6px;
+            }
+        }
+    }
+    .de-team-full-card-body {
+        max-height: 9999px;
+        overflow: hidden;
+        transition: max-height .5s ease-in-out;
+    }
+    .de-team-full-card-action {
+        .de-btn-fw {
+            min-width: 95px;
+        }
+    }
+    &.collapsed {
+        .de-team-full-card-body {
+            max-height: 0;
+        }
+    }
+}

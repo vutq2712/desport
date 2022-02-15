@@ -1,0 +1,71 @@
+.de-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: url(../media/images/navigation-border.svg);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: bottom right 1px;
+    padding-right: 32px;
+    height: $de-navigation-height;
+    padding-left: 40px;
+    text-decoration: none;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 40px;
+        background-color: $de-border-color;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    .de-account-info {
+        cursor: pointer;
+        width: calc(100% - 40px - 20px);
+        text-align: right;
+        .de-account-username {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+            border: 0;
+            outline: none;
+            @include de-title-lg-text;
+            margin-bottom: 6px;
+            a {
+                text-decoration: none;
+                color: $de-text-color;
+            }
+        }
+        .de-account-balance {
+            display: flex;
+            align-items: center;
+            .de-sub-info:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
+        .de-account-connect-wallet {
+            .de-btn {
+                height: 24px;
+                margin-top: -3px;
+                font-size: 13px;
+            }
+        }
+    }
+    .de-account-avatar {
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        outline: none;
+        border-radius: 50%;
+        margin-left: 20px;
+        padding: 0;
+        @include de-image-icon(50px, 0);
+    }
+}
+
+.de-connect-wallet {
+    padding: 0 32px;
+}

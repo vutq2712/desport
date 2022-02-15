@@ -1,0 +1,33 @@
+.de-user-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include de-flat-button;
+    .de-user-card-header-avatar {
+        border-radius: 50%;
+        margin-left: 20px;
+        @include de-image-icon(48px, 0);
+    }
+    .de-user-card-header-status {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 10px;
+        &.offline {
+            background-color: $de-state-color-orange;
+        }
+        &.online {
+            background-color: $de-state-color-green;
+        }
+    }
+    .de-user-card-header-flag {
+        margin-left: 10px;
+        img {
+            width: $de-icon-sm-width;
+            height: $de-icon-sm-height;
+        }
+    }
+    .de-user-card-header-title {
+        @include de-title-text();
+    }
+}

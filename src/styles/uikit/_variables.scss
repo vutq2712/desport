@@ -1,0 +1,118 @@
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-rfs: true !default;
+$enable-shadows: false !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-important-utilities: true !default;
+$enable-reduced-motion: true !default;
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px) !default;
+// scss-docs-end grid-breakpoints
+// 
+//
+// DESPORTS
+//== Color
+$de-primary-color: #8B5CE4;
+$de-secondary-color: #5062E5;
+$de-success-color: #609A5B;
+$de-danger-color: #A03033;
+$de-state-color-gold: #E59C50;
+$de-state-color-orange: #F48836;
+$de-state-color-green: #7FBA7A;
+$de-background-color: #0E0422;
+$de-border-color: #2F2383;
+$de-black-color: #000000;
+$de-white-color: #FFFFFF;
+$de-form-control-background: #1F064D;
+$de-gradient-orange: linear-gradient(93.86deg, #DF9344 -1.49%, #D16211 100%);
+$de-gradient-blue: linear-gradient(172.87deg, #030D58 44.44%, #050017 100%, #050017 100%);
+$de-gradient-purple: linear-gradient(180deg, rgba(31, 33, 40, 0) 5.47%, rgba(16, 9, 29, 0.7) 65.87%, #2E1069 86.51%);
+$de-gradient-dark: linear-gradient(195.81deg, rgba(31, 33, 40, 0) 32.97%, #1A0544 75.98%);
+$de-gradient-border: linear-gradient(145.71deg, rgba(255, 255, 255, 0) 23.52%, rgba(255, 255, 255, 0.7) 56.35%, #2E1069 67.57%);
+//== Icon
+$de-icon-width: 24px;
+$de-icon-height: 24px;
+$de-icon-sm-width: 16px;
+$de-icon-sm-height: 16px;
+//== Typography
+$de-font-family-barlow: Barlow,
+sans-serif !default;
+$de-font-family-heading: Elianto,
+sans-serif !default;
+//body
+$de-text-color: $de-white-color !default;
+$de-text-size: 14px;
+$de-text-weight: 500;
+$de-text-line-height: 120%;
+$de-text-letter-spacing: normal;
+//title
+$de-title-font-size: 16px;
+$de-title-font-weight: 600;
+$de-title-line-height: 19px;
+$de-title-letter-spacing: normal;
+//title-lg
+$de-title-lg-font-size: 18px;
+$de-title-lg-font-weight: 600;
+$de-title-lg-line-height: 22px;
+$de-title-lg-letter-spacing: normal;
+//subtitle
+$de-subtitle-font-size: 12px;
+$de-subtitle-font-weight: 500;
+$de-subtitle-line-height: 14px;
+$de-subtitle-letter-spacing: normal;
+//small
+$de-small-font-size: 11px;
+$de-small-font-weight: 500;
+$de-small-line-height: 13px;
+$de-small-letter-spacing: 0.5px;
+//h1
+$de-h1-font-size: 48px;
+$de-h1-font-weight: 300;
+$de-h1-line-height: 57.6px;
+$de-h1-letter-spacing: 0;
+//h2
+$de-h2-font-size: 36px;
+$de-h2-font-weight: 400;
+$de-h2-line-height: 32px;
+$de-h2-letter-spacing: -0.5px;
+//h3
+$de-h3-font-size: 32px;
+$de-h3-font-weight: 300;
+$de-h3-line-height: 38.4px;
+$de-h3-letter-spacing: 0;
+//h4
+$de-h4-font-size: 22px;
+$de-h4-font-weight: 300;
+$de-h4-line-height: 32px;
+$de-h4-letter-spacing: 0;
+//h5
+$de-h5-font-size: 20px;
+$de-h5-font-weight: 300;
+$de-h5-line-height: 26.7;
+$de-h5-letter-spacing: 0;
+//h6
+$de-h6-font-size: 18px;
+$de-h6-font-weight: 300;
+$de-h6-line-height: 24;
+$de-h6-letter-spacing: 0;
+//== Layout
+$de-sidebar-left-width:80px;
+$de-sidebar-right-width:256px;
+$de-navigation-height:83px;
+//== Utils
+// scss-docs-start spacer-variables-maps
+$de-spacer: 8px !default;
+$de-spacers: ( 0: 0, 1: $de-spacer * 1, 2: $de-spacer * 2, 3: $de-spacer * 3, 4: $de-spacer * 4, 5: $de-spacer * 5, 6: $de-spacer * 6, 7: $de-spacer * 7, 8: $de-spacer * 8, 9: $de-spacer * 9, 10: $de-spacer * 10, 11: $de-spacer * 11, 12: $de-spacer * 12, 13: $de-spacer * 13, 14: $de-spacer * 14, 15: $de-spacer * 15) !default;
+// scss-docs-end spacer-variables-maps
+$de-font-sizes: ( 1: $de-h1-font-size, 2: $de-h2-font-size, 3: $de-h3-font-size, 4: $de-h4-font-size, 5: $de-h5-font-size, 6: $de-h6-font-size) !default;
+$de-transition-default:all ease-in-out .3s !default;
+$de-box-shadow-default:1px 2px 10px rgba($de-black-color, .125) !default;
+$de-transition-fade: opacity .15s linear !default;
+$de-border-radius-sm: 4px !default;
+$de-border-radius: 8px !default;

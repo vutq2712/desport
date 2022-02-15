@@ -1,0 +1,42 @@
+.de-stats-card {
+    display: flex;
+    padding: 12px 16px 8px 16px;
+    border-radius: 8px;
+    position: relative;
+    background-color: rgba($color: $de-secondary-color, $alpha: 0.2);
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background: $de-gradient-dark;
+        opacity: 0.1;
+    }
+    .de-stats-item {
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+        .de-stats-label {
+            display: flex;
+            align-items: center;
+            @include de-subtitle-text();
+            margin-bottom: 4px;
+            svg {
+                margin-right: 6px;
+            }
+            span {
+                opacity: 0.7;
+            }
+        }
+        .de-stats-value {
+            font-family: $de-font-family-barlow;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 32px;
+            color: $de-primary-color;
+        }
+    }
+}

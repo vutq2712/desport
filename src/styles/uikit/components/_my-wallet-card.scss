@@ -1,0 +1,35 @@
+.de-my-wallet-card {
+    background: $de-gradient-dark;
+    border: 1px solid $de-border-color;
+    box-sizing: border-box;
+    border-radius: $de-border-radius;
+    padding: 24px;
+    display: flex;
+    .de-my-wallet-card-icon {
+        width: $de-icon-width;
+        height: $de-icon-height;
+        margin-right: 12px;
+    }
+    .de-my-wallet-card-title {
+        @include de-title-text();
+        margin-bottom: 12px;
+    }
+    .de-my-wallet-card-address {
+        display: flex;
+        align-items: center;
+        span {
+            @include de-normal-text(0.6);
+            margin-right: 16px;
+            display: inline-block;
+            @include text-ellipsis-inline(calc(100% - 50px));
+        }
+        a {
+            @include de-normal-text(1, $de-secondary-color);
+            text-decoration: none;
+            transition: $de-transition-default;
+            &:hover {
+                color: $de-primary-color;
+            }
+        }
+    }
+}

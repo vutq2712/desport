@@ -1,0 +1,39 @@
+.de-team-select-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(139, 92, 228, 0.1);
+    border-radius: $de-border-radius;
+    margin-bottom: 12px;
+    transition: $de-transition-default;
+    border: 1px transparent solid;
+    box-sizing: border-box;
+    cursor: pointer;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &.selected {
+        border: 1px solid $de-primary-color;
+        .team-select-members {
+            color: $de-text-color;
+        }
+    }
+    .team-select-info {
+        display: flex;
+        align-items: center;
+        .team-select-logo {
+            @include de-image-icon(32px, 12px);
+            img {
+                filter: drop-shadow(0px 0px 10px rgba(0, 237, 242, 0.3));
+            }
+        }
+        .team-select-name {
+            @include de-normal-text();
+            font-weight: 700;
+        }
+    }
+    .team-select-members {
+        @include de-subtitle-text(0.5);
+    }
+}

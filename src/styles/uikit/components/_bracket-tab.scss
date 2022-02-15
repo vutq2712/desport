@@ -1,0 +1,27 @@
+.de-bracket-tab-item {
+    background-color: rgba(21, 3, 60, 0.6);
+    border: 1px solid $de-border-color;
+    box-sizing: border-box;
+    backdrop-filter: blur(20px);
+    border-radius: $de-border-radius;
+    padding: 23px 39px;
+    margin: 0 8px;
+    @include de-title-text();
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    transition: $de-transition-default;
+    text-transform: uppercase;
+    min-height: 80px;
+    .bracket-tab-logo {
+        @include de-image-icon(32px, 12px);
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover,
+    &.active {
+        background-color: rgba(47, 35, 131, 0.6);
+        border: 1px solid $de-secondary-color;
+    }
+}

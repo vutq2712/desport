@@ -1,0 +1,38 @@
+@import "./profile-page/overview";
+@import "./profile-page/games";
+@import "./profile-page/setting";
+@import "./profile-page/wallet";
+@import "./profile-page/teams";
+// Header
+.de-profile-header {
+    padding: 28px 0 14px 0;
+    .de-profile-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.de-profile-menu {
+    border-bottom: 1px solid rgba($color: $de-border-color, $alpha: 0.5);
+    margin-bottom: 22px;
+    position: sticky;
+    top: 0;
+    z-index: 993;
+    background-color: $de-background-color;
+    .de-category-tab-item {
+        @include de-flat-button;
+        &.active {
+            &::before {
+                bottom: -2px;
+                background-image: url(./uikit/media/images/tab-hover.png);
+                height: 16px;
+                max-height: 16px;
+                background-size: 100% 16px;
+            }
+        }
+    }
+}

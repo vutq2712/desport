@@ -1,0 +1,65 @@
+.de-user-card {
+    display: flex;
+    align-items: center;
+    &.de-user-card-popover {
+        border: 1px solid $de-secondary-color;
+        padding: 16px;
+        border-radius: $de-border-radius;
+        margin-bottom: 12px;
+        min-width: 230px;
+        .de-user-card-info {
+            padding-right: 0;
+            .de-user-card-username {
+                color: $de-text-color;
+            }
+        }
+    }
+    &.de-user-card-bordered {
+        border: 1px solid $de-border-color;
+        padding: 16px;
+        border-radius: $de-border-radius;
+        .de-user-card-info {
+            .de-user-card-username {
+                color: $de-text-color;
+            }
+        }
+    }
+    .de-user-card-avatar {
+        border-radius: 50%;
+        @include de-image-icon(40px, 12px);
+    }
+    .de-user-card-info {
+        width: calc(100% - 40px - 12px);
+        padding-right: 16px;
+        position: relative;
+        .de-user-card-username {
+            color: $de-secondary-color;
+            margin-bottom: 2px;
+        }
+        .de-user-card-title {
+            @include de-subtitle-text(0.5);
+        }
+        .de-user-card-flag {
+            position: absolute;
+            right: 22px;
+            top: -4px;
+            img {
+                height: 10px;
+            }
+        }
+        .de-user-card-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            top: 6px;
+            right: 8px;
+            position: absolute;
+            &.offline {
+                background-color: $de-state-color-orange;
+            }
+            &.online {
+                background-color: $de-state-color-green;
+            }
+        }
+    }
+}

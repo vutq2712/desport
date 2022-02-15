@@ -1,0 +1,54 @@
+.de-nav-menu-item {
+    display: flex;
+    align-items: center;
+    @include de-title-text;
+    font-weight: 400;
+    position: relative;
+    text-decoration: none;
+    padding: 12px 24px;
+    height: 100%;
+    &:hover {
+        color: $de-text-color;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-size: 100% 25px;
+        background-position: bottom 1px center;
+        background-image: url(../media/images/navigation-hover.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 25px;
+        z-index: -1;
+        max-height: 0;
+        overflow: hidden;
+        transition: $de-transition-default;
+    }
+    span {
+        color: $de-white-color !important;
+    }
+    svg {
+        width: $de-icon-width;
+        height: $de-icon-height;
+        margin-right: $de-spacer;
+        opacity: 0.5;
+        transition: $de-transition-default;
+    }
+    &:hover {
+        svg {
+            opacity: 1;
+        }
+    }
+    &.active {
+        font-weight: 500;
+        color: $de-state-color-gold;
+        &::before {
+            max-height: 25px;
+        }
+        svg {
+            opacity: 1;
+        }
+    }
+}

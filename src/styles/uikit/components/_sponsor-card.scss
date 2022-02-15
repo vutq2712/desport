@@ -1,0 +1,40 @@
+.de-sponsor-card {
+    background: $de-gradient-border;
+    border-radius: $de-border-radius;
+    padding: 1px;
+    position: relative;
+    .bg {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        background-image: url(../media/images/sponsor-bg.png);
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        z-index: 2;
+    }
+    .de-sponsor-card-inner {
+        background: linear-gradient( 225.37deg, rgba(31, 33, 40, 0) 0%, #1a0544 100%), #15033c;
+        border-radius: $de-border-radius;
+        padding: 104px 40px 32px 40px;
+    }
+    .de-sponsor-star {
+        margin-bottom: $de-spacer;
+        position: relative;
+        z-index: 3;
+        svg {
+            width: $de-icon-width;
+            margin-right: 4px;
+        }
+    }
+    .de-sponsor-name {
+        font-size: 22px;
+        line-height: 32px;
+        color: inherit;
+        position: relative;
+        z-index: 3;
+    }
+}

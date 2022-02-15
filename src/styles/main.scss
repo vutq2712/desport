@@ -1,0 +1,56 @@
+$primary: rgb(127, 155, 135);
+$primary2: #999;
+$primary3: #aaa;
+$primary4: #bbb;
+.-normal-layout {
+    // display: flex;
+    min-height: 100vh;
+    .app__main {
+        &--sidebar {
+            width: 200px;
+            background: $primary;
+        }
+        &--content {
+            width: calc(100% - 200px);
+        }
+        &--header {
+            background: $primary2;
+            .header-top {
+                background: $primary;
+            }
+            .header-banner {
+                background: $primary2;
+            }
+            .header-bottom {
+                background: $primary4;
+            }
+        }
+        &--nav {
+            background: $primary3;
+        }
+        &--footer {
+            background: $primary4;
+        }
+    }
+}
+
+.game-tab {
+    .list-game {
+        border-bottom: 3px solid #ccc;
+        ul {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            li {
+                button {
+                    display: flex;
+                    align-items: center;
+                }
+                &.active * {
+                    color: blue;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

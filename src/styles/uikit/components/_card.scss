@@ -1,0 +1,26 @@
+.de-card {
+    padding: 32px 30px;
+    margin-bottom: 24px;
+    background: rgba(21, 3, 60, 0.6);
+    border-radius: 8px;
+    &.de-pb-12px {
+        padding-bottom: 12px;
+    }
+    &.full-h {
+        height: calc(100% - 24px);
+    }
+    &.bordered {
+        border: 1px solid $de-border-color;
+    }
+    .de-card-header {
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 32px;
+        .de-card-title {
+            @include de-title-text(0.5);
+            margin-bottom: 0;
+        }
+    }
+}

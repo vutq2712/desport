@@ -1,0 +1,93 @@
+.de-ts-dashboard {
+    padding-bottom: 58px;
+    .de-card-header {
+        margin-bottom: 24px;
+        .de-card-title {
+            text-transform: uppercase;
+        }
+    }
+    .de-bracket-status label {
+        color: $de-primary-color;
+        margin-right: $de-spacer;
+    }
+    .de-btn {
+        &.de-btn-link {
+            text-transform: capitalize;
+            color: $de-secondary-color;
+            &:hover {
+                color: $de-primary-color;
+            }
+        }
+    }
+    .operating-section {
+        padding: 32px 40px 16px 40px;
+    }
+    .bracket-section {
+        padding: 32px 40px;
+        min-height: 264px;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            background: none !important;
+        }
+        .de-ts-list-bracket-dashboard {
+            tr {
+                td {
+                    padding: 16px;
+                    @include de-title-text(1, $de-text-color, normal);
+                    vertical-align: middle;
+                    &:last-child {
+                        text-align: right;
+                    }
+                    .de-btn-link {
+                        text-transform: uppercase;
+                        font-weight: 700;
+                    }
+                }
+                &:nth-of-type(odd) {
+                    td {
+                        &:first-child {
+                            border-radius: 8px 0 0 8px;
+                        }
+                        &:last-child {
+                            border-radius: 0 8px 8px 0;
+                        }
+                    }
+                }
+                &:nth-of-type(odd)>* {
+                    background-color: rgba(139, 92, 228, 0.1);
+                }
+                &:nth-of-type(even)>* {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    .registration-section {
+        padding: 32px 40px 16px 40px;
+    }
+    .prize-pool-section {
+        padding: 32px 40px;
+    }
+    .authorization-section {
+        padding: 32px 40px;
+        .de-card-body {
+            .list-search {
+                .de-team-member-card {
+                    background-color: #1f064d !important;
+                    height: 162px;
+                    .member-info {
+                        .member-status-active {
+                            display: flex;
+                            column-gap: 26px;
+                        }
+                        .actions {
+                            .de-btn-outline-primary {
+                                text-transform: none !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

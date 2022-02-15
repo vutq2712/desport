@@ -1,0 +1,20 @@
+.de-tournament-subinfo {
+    .de-tournament-sub-info {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @include de-subtitle-text();
+        svg {
+            margin-right: 4px;
+        }
+        a {
+            text-decoration: none;
+            color: $de-secondary-color;
+            transition: $de-transition-default;
+            &:hover {
+                color: $de-primary-color;
+            }
+        }
+    }
+}

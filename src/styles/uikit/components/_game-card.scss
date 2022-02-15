@@ -1,0 +1,35 @@
+.de-game-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    .game-logo {
+        border-radius: $de-border-radius;
+        @include de-image-icon(150px, 24px);
+    }
+    .game-info {
+        width: calc(100% - 150px - 24px);
+        .game-info-header {
+            margin-bottom: 16px;
+            .tag {
+                margin-bottom: 8px;
+                span {
+                    display: inline-flex;
+                    align-items: center;
+                    background: $de-border-color;
+                    border-radius: 4px;
+                    padding: 4px 10px;
+                    text-align: center;
+                    @include de-subtitle-text();
+                }
+            }
+            .username {
+                font-family: $de-font-family-barlow;
+                font-weight: 300;
+                font-size: 22px;
+                line-height: 32px;
+                color: $de-text-color;
+                min-height: 32px;
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+.de-my-tournament-header {
+    margin-bottom: 40px;
+    padding-top: 48px;
+    .de-my-tournament-heading {
+        letter-spacing: 0;
+        text-transform: capitalize;
+    }
+    .de-btn {
+        padding-left: 12px;
+        padding-right: 14px;
+        &::before {
+            display: none;
+        }
+        svg {
+            margin-left: 8px;
+        }
+    }
+}
+
+.de-create-tournament-title {
+    text-transform: uppercase !important;
+    margin-bottom: 16px !important;
+}
+
+.de-create-tournament-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    span {
+        @include de-subtitle-text();
+        margin-left: 4px;
+    }
+    .line {
+        margin: 0 12px;
+    }
+}
+
+.choose-games-list {
+    margin-right: -10px;
+    padding-right: 10px;
+    height: 258px;
+    margin-bottom: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+    &:hover {
+        &::-webkit-scrollbar {
+            background-color: #1b397563;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #1b3975;
+        }
+    }
+    .all-games-list {
+        .row {
+            --bs-gutter-x: 12px;
+        }
+        .choose-game-button-wrap {
+            position: relative;
+            input {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+            }
+        }
+        .choose-game-button {
+            width: 100%;
+            margin-bottom: 12px;
+            @include de-flat-button;
+            border: 1px solid $de-border-color;
+            box-sizing: border-box;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 12px 8px 8px 8px;
+            transition: $de-transition-default;
+            &:hover,
+            &.active {
+                background-color: $de-border-color;
+                border: 1px solid $de-border-color;
+            }
+            .logo {
+                margin-bottom: 6px;
+                @include de-image-icon(32px, 0);
+            }
+            .name {
+                @include de-normal-text();
+            }
+        }
+    }
+}
+
+.de-tournament-created {
+    h2 {
+        line-height: 44px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        &.de-modal-create-tournament {
+            max-width: 480px;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@mixin text-ellipsis($line:2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin text-ellipsis-inline($max_width:100%) {
+    max-width: $max_width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}

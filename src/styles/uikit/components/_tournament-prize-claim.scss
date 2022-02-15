@@ -1,0 +1,70 @@
+.de-tournament-prize-claim {
+    border-radius: $de-border-radius;
+    margin-bottom: 24px;
+    padding: 32px;
+    position: relative;
+    background-color: rgba(21, 3, 60, 0.6);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: $de-border-radius;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-image: url("../media/images/claim-bg.png");
+        mix-blend-mode: screen;
+        background-position: bottom -120px right -40px;
+        background-size: auto 800px;
+        background-repeat: no-repeat;
+        opacity: 0.2;
+    }
+    &.refund {
+        &::before {
+            background-image: url("../media/images/refund-bg.png");
+        }
+    }
+    .de-claim-title {
+        @include de-title-text(0.5);
+        margin-bottom: 32px;
+    }
+    .de-claim-label {
+        @include de-subtitle-text();
+        margin-bottom: 6px;
+    }
+    .de-claim-value {
+        font-family: $de-font-family-barlow;
+        font-size: 48px;
+        line-height: 58px;
+        color: $de-text-color;
+        margin-bottom: 32px;
+        &.gold {
+            color: $de-state-color-gold;
+        }
+        svg {
+            margin-left: 8px;
+        }
+    }
+    .de-change-app-network {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .de-warn-box {
+            display: flex;
+            align-items: center;
+            @include de-normal-text();
+            text-align: center;
+            padding: 7.5px 8px;
+            margin-right: 12px;
+            background: rgba(160, 48, 51, 0.2);
+            border-radius: 4px;
+            svg {
+                margin-right: 6px;
+            }
+        }
+    }
+}
