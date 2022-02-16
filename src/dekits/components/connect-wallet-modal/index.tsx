@@ -6,68 +6,118 @@ import { PolygonNetworkIcon } from "@app/dekits/icons/polygon-network-icon";
 import { WalletConnectIcon } from "@app/dekits/icons/wallet-connect-icon";
 import { AbstractConnector } from "@web3-react/abstract-connector";
 import { useWeb3React } from "@web3-react/core";
-import { useEffect, useState } from "react";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { useCallback, useEffect, useState } from "react";
 import Web3 from "web3";
 import { NetworkItem } from "../network-item";
-import { CHAIN_IDS, injected, RPC_URL, walletConnect, WalletNames } from "./connectors";
+import { bscConnector, ConnectorNames, connectorsByName, connectorsSupportByNetwork, injected, RPC_URL, SUPPORTED_WALLETS, WalletNames } from "./connectors";
+import { appNetworkType, APP_NETWORKS, APP_NETWORKS_NAME, APP_NETWORKS_SUPPORT, BSC_CHAIN_ID, ETH_CHAIN_ID, POLYGON_CHAIN_ID, requestSupportNetwork } from "./connectors/networks";
 
 
 export function ConnectWalletModal(props: any) {
   const { modalRef } = props;
   const [agree, setAgree] = useState(false);
-  const [selectedNetwork, setSelectedNetwork] = useState(-1);
+  const [selectedNetwork, setSelectedNetwork] = useState('');
   const [selectedWallet, setSelectedWallet] = useState('');
+  const [walletName, setWalletName] = useState<(undefined | string)[]>([]);
+  const [currentConnector, setCurrentConnector] = useState<undefined | AbstractConnector>(undefined);
+  const [walletNameSuccess, setWalletNameSuccess] = useState<string | undefined>(undefined);
+
+
+  const handleProviderChosen = (name: string, connector: AbstractConnector) => {
+    setCurrentConnector(connector);
+    walletName.indexOf(name) < 0 && setWalletName([...walletName, name]);
+  }
+
+  const handleNetworkChange = (
+    appNetwork: boolean,
+    updatedVal: string,
+    agreedTerms: boolean = false,
+    connector?: AbstractConnector,
+  ) => {
+    if (agreedTerms) {
+      if (appNetwork) {
+        // settingAppNetwork(NetworkUpdateType.App, updatedVal);
+        return;
+      }
+      connector &&
+        handleProviderChosen &&
+        handleProviderChosen(
+          updatedVal,
+          connector,
+        );
+    }
+  };
+
 
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
 
-  const handleConnectNetwork = (networkSelected:number) => {
-    switch (networkSelected) {
-    case CHAIN_IDS.REACT_APP_ETH_CHAIN_ID:
-      return `${RPC_URL.ETH_RPC_URL}`;
-    case CHAIN_IDS.REACT_APP_BSC_CHAIN_ID:
-      return `${RPC_URL.BSC_RPC_URL}`;
-    case CHAIN_IDS.REACT_APP_POLYGON_CHAIN_ID:
-    default:
-      return `${RPC_URL.POLYGON_RPC_URL}`;
-    }
-  }
+  const connectorsByNetwork = (() => {
+    switch (selectedNetwork) {
+      case BSC_CHAIN_ID:
+        return connectorsSupportByNetwork[APP_NETWORKS_NAME.BSC];
 
-  const handleConnectWallet = (walletName: string) => {
-    switch (walletName) {
-    case WalletNames.MetaMask:
-      return injected;
-    case WalletNames.WalletConnect:
-      return walletConnect;
-    default:
-      break;
-    }
-  }
+      case POLYGON_CHAIN_ID:
+        return connectorsSupportByNetwork[APP_NETWORKS_NAME.POLYGON];
 
-  const web3 = new Web3(new Web3.providers.HttpProvider(handleConnectNetwork(selectedNetwork)));
-  const connect = async () => {
+      case ETH_CHAIN_ID:
+      default:
+        return SUPPORTED_WALLETS;
+    }
+  })();
+
+
+  
+  // const connect = async () => {
+  //   try {
+  //     // const web3 = new Web3(new Web3.providers.HttpProvider(handleConnectNetwork(selectedNetwork)));
+      
+  //     // await activate(connectorsByName[selectedWallet])
+  //     localStorage.setItem('isWalletConnected', 'true');
+  //     // var balance = await web3.eth.getBalance(`${account}`); //Will give value in.
+  //     await modalRef.close({active,account})
+  //   } catch (ex) {
+  //     console.log(ex)
+  //   }
+  // }
+  const tryActivate = useCallback(async (connector: AbstractConnector, appChainID: string, wallet: string) => {
     try {
-      await activate(handleConnectWallet(selectedWallet) as AbstractConnector)
-      localStorage.setItem('isWalletConnected', 'true');
-      var balance = await web3.eth.getBalance(`${account}`); //Will give value in.
-      await modalRef.close({active,account,balance})
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-
-  useEffect(() => { 
-    const connectWalletOnPageLoad = async () => {
-      if (localStorage?.getItem('isWalletConnected') === 'true') {
-        try {
-          await activate(handleConnectWallet(selectedWallet) as AbstractConnector)
-          localStorage.setItem('isWalletConnected', 'true')
-        } catch (ex) {
-          console.log(ex)
-        }
+      if (wallet === ConnectorNames.MetaMask || wallet === ConnectorNames.BSC) {
+        await requestSupportNetwork(appChainID, wallet);
       }
+      if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
+        connector.walletConnectProvider = undefined;
+      }
+      
+      if (connector && walletName) {
+        await activate(connector, undefined, true)
+          .then(() => {
+            setWalletNameSuccess(wallet);
+          })
+          .catch(async error => {
+            
+          })
+          modalRef.close()
+      }
+    } catch (error) {
+      
     }
-    connectWalletOnPageLoad()
-  }, [])
+  },[connector])
+
+  useEffect(() => {
+    const tryLoginAfterSwitch = async () => {
+      if(currentConnector && APP_NETWORKS_SUPPORT[selectedNetwork]) {
+        let ok = true;
+        ok && await tryActivate(
+          currentConnector,
+          selectedNetwork,
+          walletName[walletName.length - 1] as string
+        )
+      }
+    };
+
+    currentConnector && selectedNetwork && walletName.length > 0 && tryLoginAfterSwitch();
+  }, [currentConnector, selectedNetwork, walletName]);
 
   return (
     <div className='modal-body'>
@@ -84,36 +134,42 @@ export function ConnectWalletModal(props: any) {
         </div>
         <div className='text-white-50 de-mb-2'>II. Choose network</div>
         <div className='row de-gx-3'>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedNetwork === +CHAIN_IDS.REACT_APP_ETH_CHAIN_ID} onSelect={() => setSelectedNetwork(+CHAIN_IDS.REACT_APP_ETH_CHAIN_ID)} icon={EthereumNetworkIcon} name='Ethereum' />
-          </div>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedNetwork === CHAIN_IDS.REACT_APP_BSC_CHAIN_ID} onSelect={() => setSelectedNetwork(CHAIN_IDS.REACT_APP_BSC_CHAIN_ID)} icon={BSCNetworkIcon} name='BSC' />
-          </div>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedNetwork === CHAIN_IDS.REACT_APP_POLYGON_CHAIN_ID} onSelect={() => setSelectedNetwork(CHAIN_IDS.REACT_APP_POLYGON_CHAIN_ID)} icon={PolygonNetworkIcon} name='Polygon' />
-          </div>
+          {Object.keys(APP_NETWORKS).map((key: string) => {
+            const network = APP_NETWORKS[key as appNetworkType];
+            return (
+              <div className='col-md-4 col-6'>
+                <NetworkItem selected={selectedNetwork === network.id} onSelect={() => {
+                  setSelectedNetwork(network.id);
+                  handleNetworkChange(true,network.id,agree)
+                }} icon={network.icon} name={network.name} />
+              </div>
+            );
+          })}
         </div>
         <div className='text-white-50 de-mb-2'>III. Choose wallet</div>
         <div className='row de-gx-3'>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedWallet === WalletNames.MetaMask} onSelect={() => setSelectedWallet(WalletNames.MetaMask)} icon={MetamaskIcon} name='MetaMask' />
-          </div>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedWallet === WalletNames.WalletConnect} onSelect={() => setSelectedWallet(WalletNames.WalletConnect)} icon={WalletConnectIcon} name='WalletConnect' />
-          </div>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedWallet === WalletNames.BSC} onSelect={() => setSelectedWallet(WalletNames.BSC)} icon={BSCNetworkIcon} name='BSC Wallet' />
-          </div>
-          <div className='col-md-4 col-6'>
-            <NetworkItem selected={selectedWallet === WalletNames.WalletLinkConnect} onSelect={() => setSelectedWallet(WalletNames.WalletLinkConnect)} icon={CoinbaseWalletIcon} name='Coinbase Wallet' />
-          </div>
+        {Object.keys(connectorsByNetwork).map((key: string) => {
+          const network = connectorsByNetwork[key];
+          return (
+            <div className='col-md-4 col-6'>
+              <NetworkItem selected={selectedWallet === network.name} onSelect={() => {
+                setSelectedWallet(network.name)
+                handleNetworkChange(false,network.name,agree, network.connector  )
+                }} icon={network.icon} name={network.name} />
+            </div>
+          );
+        })}
         </div>
       </div>
       <div className='modal-actions'>
         <button type='button' className='de-btn' onClick={modalRef.close}>CANCEL</button>
-        <button type='submit' disabled={!agree || selectedNetwork === -1 || selectedWallet === ''} className='de-btn de-btn-primary w-100' onClick={connect}>CONNECT</button>
+        <button type='submit' disabled={!agree || selectedNetwork === '' || selectedWallet === ''} className='de-btn de-btn-primary w-100' onClick={()=>{
+          tryActivate( 
+          currentConnector as AbstractConnector,
+          selectedNetwork,
+          walletName[walletName.length - 1] as string)}}>CONNECT</button>
       </div>
     </div>
   )
 }
+

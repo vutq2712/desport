@@ -67,11 +67,12 @@ DeApp.getInitialProps = async (appCtx) => {
   if (Component.getServerSideProps) {
     Object.assign(pageProps, await Component.getServerSideProps(ctx))
   }
-
-  return {
+  const initProps = ctx.locale ? {
     pageProps,
     langCnf: require(`@app/const/lang/${ctx.locale}`).messages,
-  }
+  } : {pageProps};
+  
+  return initProps;
 }
 
 export default appWithTranslation(DeApp);

@@ -10,8 +10,8 @@ import { trimMiddlePartAddress } from "@app/dekits/components/connect-wallet-mod
 export default function Nav(props) {
   const { isLoggedIn, userInfo } = useSession();
   const isConnectWallet = false;
-  const [account,setAccount] = useState('');
-  const [active,setActive] = useState(false);
+  const [accounts,setAccount] = useState('');
+  // const [active,setActive] = useState(false);
   const [balance,setBalance] = useState(null);
 
   const handleConnectWalletClick = useCallback(() => {
@@ -20,12 +20,19 @@ export default function Nav(props) {
       if (!data) {
         return;
       }
+      console.log(data,'data');
       
-      setAccount(data.account);
-      setActive(data.active);
+      // setAccount(data.account);
+      // setActive(data.active);
       setBalance(data.balance);
     })
   }, []);
+
+  const { active, account } = useWeb3React()
+  useEffect(()=>{
+    if(account) setAccount(account);
+    
+  },[account])
 
  
 
@@ -134,7 +141,7 @@ export default function Nav(props) {
                 <span>{balance}</span>
               </div>
               <div className='de-wallet-address'>
-                <span>{trimMiddlePartAddress(account as string)}</span>
+                <span>{trimMiddlePartAddress(accounts as string)}</span>
               </div>
             </div> : <div className='de-account-connect-wallet' onClick={handleConnectWalletClick}>
               <button type='button' className='de-btn de-btn-sm de-btn-outline-secondary'>
