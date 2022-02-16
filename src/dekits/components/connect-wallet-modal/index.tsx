@@ -32,21 +32,18 @@ export function ConnectWalletModal(props: any) {
   const handleNetworkChange = (
     appNetwork: boolean,
     updatedVal: string,
-    agreedTerms: boolean = false,
     connector?: AbstractConnector,
   ) => {
-    if (agreedTerms) {
-      if (appNetwork) {
-        // settingAppNetwork(NetworkUpdateType.App, updatedVal);
-        return;
-      }
-      connector &&
+    if (appNetwork) {
+      // settingAppNetwork(NetworkUpdateType.App, updatedVal);
+      return;
+    }
+    connector &&
         handleProviderChosen &&
         handleProviderChosen(
           updatedVal,
           connector,
         );
-    }
   };
 
 
@@ -126,7 +123,7 @@ export function ConnectWalletModal(props: any) {
               <div className='col-md-4 col-6' key={key}>
                 <NetworkItem selected={selectedNetwork === network.id} onSelect={() => {
                   setSelectedNetwork(network.id);
-                  handleNetworkChange(true,network.id,agree)
+                  handleNetworkChange(true,network.id)
                 }} icon={network.icon} name={network.name} />
               </div>
             );
@@ -140,7 +137,7 @@ export function ConnectWalletModal(props: any) {
               <div className='col-md-4 col-6' key={key}>
                 <NetworkItem selected={selectedWallet === network.name} onSelect={() => {
                   setSelectedWallet(network.name)
-                  handleNetworkChange(false,network.name,agree, network.connector  )
+                  handleNetworkChange(false,network.name, network.connector  )
                 }} icon={network.icon} name={network.name} />
               </div>
             );
