@@ -54,32 +54,18 @@ export function ConnectWalletModal(props: any) {
 
   const connectorsByNetwork = (() => {
     switch (selectedNetwork) {
-      case BSC_CHAIN_ID:
-        return connectorsSupportByNetwork[APP_NETWORKS_NAME.BSC];
+    case BSC_CHAIN_ID:
+      return connectorsSupportByNetwork[APP_NETWORKS_NAME.BSC];
 
-      case POLYGON_CHAIN_ID:
-        return connectorsSupportByNetwork[APP_NETWORKS_NAME.POLYGON];
+    case POLYGON_CHAIN_ID:
+      return connectorsSupportByNetwork[APP_NETWORKS_NAME.POLYGON];
 
-      case ETH_CHAIN_ID:
-      default:
-        return SUPPORTED_WALLETS;
+    case ETH_CHAIN_ID:
+    default:
+      return SUPPORTED_WALLETS;
     }
   })();
 
-
-  
-  // const connect = async () => {
-  //   try {
-  //     // const web3 = new Web3(new Web3.providers.HttpProvider(handleConnectNetwork(selectedNetwork)));
-      
-  //     // await activate(connectorsByName[selectedWallet])
-  //     localStorage.setItem('isWalletConnected', 'true');
-  //     // var balance = await web3.eth.getBalance(`${account}`); //Will give value in.
-  //     await modalRef.close({active,account})
-  //   } catch (ex) {
-  //     console.log(ex)
-  //   }
-  // }
   const tryActivate = useCallback(async (connector: AbstractConnector, appChainID: string, wallet: string) => {
     try {
       if (wallet === ConnectorNames.MetaMask || wallet === ConnectorNames.BSC) {
@@ -97,7 +83,7 @@ export function ConnectWalletModal(props: any) {
           .catch(async error => {
             
           })
-          modalRef.close()
+        modalRef.close({selectedNetwork,selectedWallet})
       }
     } catch (error) {
       
@@ -117,7 +103,7 @@ export function ConnectWalletModal(props: any) {
     };
 
     currentConnector && selectedNetwork && walletName.length > 0 && tryLoginAfterSwitch();
-  }, [currentConnector, selectedNetwork, walletName]);
+  }, []);
 
   return (
     <div className='modal-body'>
@@ -137,7 +123,7 @@ export function ConnectWalletModal(props: any) {
           {Object.keys(APP_NETWORKS).map((key: string) => {
             const network = APP_NETWORKS[key as appNetworkType];
             return (
-              <div className='col-md-4 col-6'>
+              <div className='col-md-4 col-6' key={key}>
                 <NetworkItem selected={selectedNetwork === network.id} onSelect={() => {
                   setSelectedNetwork(network.id);
                   handleNetworkChange(true,network.id,agree)
@@ -148,22 +134,22 @@ export function ConnectWalletModal(props: any) {
         </div>
         <div className='text-white-50 de-mb-2'>III. Choose wallet</div>
         <div className='row de-gx-3'>
-        {Object.keys(connectorsByNetwork).map((key: string) => {
-          const network = connectorsByNetwork[key];
-          return (
-            <div className='col-md-4 col-6'>
-              <NetworkItem selected={selectedWallet === network.name} onSelect={() => {
-                setSelectedWallet(network.name)
-                handleNetworkChange(false,network.name,agree, network.connector  )
+          {Object.keys(connectorsByNetwork).map((key: string) => {
+            const network = connectorsByNetwork[key];
+            return (
+              <div className='col-md-4 col-6' key={key}>
+                <NetworkItem selected={selectedWallet === network.name} onSelect={() => {
+                  setSelectedWallet(network.name)
+                  handleNetworkChange(false,network.name,agree, network.connector  )
                 }} icon={network.icon} name={network.name} />
-            </div>
-          );
-        })}
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className='modal-actions'>
         <button type='button' className='de-btn' onClick={modalRef.close}>CANCEL</button>
-        <button type='submit' disabled={!agree || selectedNetwork === '' || selectedWallet === ''} className='de-btn de-btn-primary w-100' onClick={()=>{
+        <button type='submit' disabled={!agree || selectedNetwork === '' || selectedWallet === ''} className='de-btn de-btn-primary w-100' onClick={() => {
           tryActivate( 
           currentConnector as AbstractConnector,
           selectedNetwork,

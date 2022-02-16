@@ -5,34 +5,41 @@ import { openModal } from "@app/dekits/modal";
 import { useSession } from '@app/hooks/session';
 import { injected } from "@app/dekits/components/connect-wallet-modal/connectors";
 import { useWeb3React } from "@web3-react/core";
-import { trimMiddlePartAddress } from "@app/dekits/components/connect-wallet-modal/ultils/accountAdress";
+import { getAccountBalance, trimMiddlePartAddress } from "@app/dekits/components/connect-wallet-modal/ultils/accountAdress";
+import BigNumber from 'bignumber.js';
 
 export default function Nav(props) {
   const { isLoggedIn, userInfo } = useSession();
   const isConnectWallet = false;
   const [accounts,setAccount] = useState('');
   // const [active,setActive] = useState(false);
-  const [balance,setBalance] = useState(null);
+  const [balance,setBalance] = useState(null as any);
 
+  const { active, account, connector } = useWeb3React()
   const handleConnectWalletClick = useCallback(() => {
     const connectWallet = openModal(ConnectWalletModal, { dialogClassName: 'de-modal-md', closeButton: true });
-    connectWallet.afterClosed().subscribe(data => {
+    connectWallet.afterClosed().subscribe(async (data) => {
       if (!data) {
         return;
       }
-      console.log(data,'data');
-      
-      // setAccount(data.account);
-      // setActive(data.active);
-      setBalance(data.balance);
+      const accountBalance = await getAccountBalance(
+        data.selectedNetwork,
+        data.selectedWallet,
+        account as string,
+        connector as any,
+      );
+      setBalance(new BigNumber(accountBalance._hex).div(new BigNumber(10).pow(18)).toFixed(5));
     })
   }, []);
 
-  const { active, account } = useWeb3React()
-  useEffect(()=>{
-    if(account) setAccount(account);
-    
+  useEffect(() => {
+    if(account)
+      setAccount(account);
   },[account])
+
+  const fetchUserBalance = useCallback(async () => {
+    
+  },[])
 
  
 

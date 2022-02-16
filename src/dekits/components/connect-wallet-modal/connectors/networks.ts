@@ -117,7 +117,10 @@ export const APP_NETWORKS_SUPPORT: {[key: number]: NetworkInfo } = {
 
 
 export const requestSupportNetwork = async (chainId: string, walletName: string) => {
+  console.log(chainId, (window as any).BinanceChain);
+  
   const provider = walletName === ConnectorNames.MetaMask ? (window as any).ethereum : (window as any).BinanceChain;
+  
   if (provider) {
     try {
       const networkInfo = APP_NETWORKS_SUPPORT[+chainId];
@@ -132,22 +135,22 @@ export const requestSupportNetwork = async (chainId: string, walletName: string)
           if (error.code === 4902) {
             try {
               await provider.request({
-                  method: 'wallet_addEthereumChain',
-                  params: [{
-                    ...(networkInfo.details || {})
-                  }]
-                });
-              } catch (addError) {
-                console.log("requestSupportNetwork", addError);
-                console.error(addError)
-                return false;
-              }
+                method: 'wallet_addEthereumChain',
+                params: [{
+                  ...(networkInfo.details || {})
+                }]
+              });
+            } catch (addError) {
+              console.log("requestSupportNetwork", addError);
+              console.error(addError)
+              return false;
+            }
           } else {
             return false;
           }
 
+        }
       }
-    }
 
       return true
     } catch (error: any) {
