@@ -49,39 +49,6 @@ export enum WalletNames {
   WalletLink = "WalletLink",
 }
 
-// export const injected = new InjectedConnector({
-//   supportedChainIds: [1, 3, 4, 5, 42],
-// })
-
-// export const bscConnector = new BscConnector({}) as any;
-
-// // export const walletConnect = new WalletConnectConnector({
-// //   rpc: {
-// //     [Number(REACT_APP_ETH_CHAIN_ID)]: process.env.REACT_APP_NETWORK_URL as string,
-// //     [Number(REACT_APP_BSC_CHAIN_ID)]: 'https://bsc-dataseed.binance.org/',
-// //     [Number(REACT_APP_POLYGON_CHAIN_ID)]: 'https://rpc-mainnet.maticvigil.com'
-// //   },
-// //   bridge: 'https://bridge.walletconnect.org',
-// //   qrcode: true,
-// //   //@ts-ignore
-// //   pollingInterval: 10000
-// // });
-
-// export const walletconnect = new WalletConnectConnector({
-//   rpc: {
-//         [Number(REACT_APP_ETH_CHAIN_ID)]: process.env.REACT_APP_NETWORK_URL as string,
-//         [Number(REACT_APP_BSC_CHAIN_ID)]: 'https://bsc-dataseed.binance.org/',
-//         [Number(REACT_APP_POLYGON_CHAIN_ID)]: 'https://rpc-mainnet.maticvigil.com'
-//       },
-//   bridge: 'https://bridge.walletconnect.org',
-//   qrcode: true,
-//   // pollingInterval: 10000,
-// })
-
-// export const walletlink = new WalletLinkConnector({
-//   url: process.env.REACT_APP_NETWORK_URL as string,
-//   appName: 'web3-react example'
-// })
 
 export const bscConnector = new BscConnector({}) as any;
 export const injected = new InjectedConnector({});
@@ -103,8 +70,8 @@ bscConnector.handleChainChanged = (chainId: string) => {
 // mainnet only
 export const walletLinkConnect = new WalletLinkConnector({
   url: process.env.REACT_APP_NETWORK_URL || '',
-  appName: 'Red Kite',
-  appLogoUrl: 'https://redkite.polkafoundry.com/images/logo-red-kite.svg',
+  appName: 'DeSports',
+  appLogoUrl: 'h/_next/static/media/Logo.6d0eafdc.svg',
   darkMode: true,
   // supportedChainIds: [1,4,5],
 });
@@ -119,7 +86,7 @@ export const walletConnect = new WalletConnectConnector({
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
   //@ts-ignore
-  pollingInterval: 10000
+  pollingInterval: 12000
 });
 
 export const walletConnectBsc = new WalletConnectConnector({
@@ -145,22 +112,6 @@ export const walletConnectPolygon = new WalletConnectConnector({
   //@ts-ignore
   pollingInterval: 10000
 });
-
-
-// export const connectorsByName: { [name: string]: AbstractConnector } = {
-//   Injected: injected,
-//   // Network: network,
-//   WalletConnect: walletconnect,
-//   WalletLink: walletlink,
-//   // Ledger: ledger,
-//   // Trezor: trezor,
-//   // Frame: frame,
-//   // Authereum: authereum,
-//   // Fortmatic: fortmatic,
-//   // Portis: portis,
-//   // Squarelink: squarelink,
-//   // Torus: torus
-// }
 
 export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
   METAMASK: {

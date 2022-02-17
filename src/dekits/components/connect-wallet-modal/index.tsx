@@ -1,16 +1,9 @@
-import { BSCNetworkIcon } from "@app/dekits/icons/bsc-network-icon";
-import { CoinbaseWalletIcon } from "@app/dekits/icons/coinbase-wallet-icon";
-import { EthereumNetworkIcon } from "@app/dekits/icons/ethereum-network-icon";
-import { MetamaskIcon } from "@app/dekits/icons/metamask-icon";
-import { PolygonNetworkIcon } from "@app/dekits/icons/polygon-network-icon";
-import { WalletConnectIcon } from "@app/dekits/icons/wallet-connect-icon";
 import { AbstractConnector } from "@web3-react/abstract-connector";
-import { useWeb3React } from "@web3-react/core";
+import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { useCallback, useEffect, useState } from "react";
-import Web3 from "web3";
 import { NetworkItem } from "../network-item";
-import { bscConnector, ConnectorNames, connectorsByName, connectorsSupportByNetwork, injected, RPC_URL, SUPPORTED_WALLETS, WalletNames } from "./connectors";
+import { ConnectorNames, connectorsSupportByNetwork, SUPPORTED_WALLETS } from "./connectors";
 import { appNetworkType, APP_NETWORKS, APP_NETWORKS_NAME, APP_NETWORKS_SUPPORT, BSC_CHAIN_ID, ETH_CHAIN_ID, POLYGON_CHAIN_ID, requestSupportNetwork } from "./connectors/networks";
 
 
@@ -68,20 +61,24 @@ export function ConnectWalletModal(props: any) {
       if (wallet === ConnectorNames.MetaMask || wallet === ConnectorNames.BSC) {
         await requestSupportNetwork(appChainID, wallet);
       }
+
       if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
         connector.walletConnectProvider = undefined;
       }
       
-      if (connector && walletName) {
+      if (connector && walletName) {        
         await activate(connector, undefined, true)
           .then(() => {
             setWalletNameSuccess(wallet);
           })
           .catch(async error => {
+            console.log(connector);
+            
+            console.log(error,'error');
             
           })
-        modalRef.close({selectedNetwork,selectedWallet})
-      }
+        }
+        modalRef.close({appChainID,wallet})
     } catch (error) {
       
     }
@@ -155,4 +152,3 @@ export function ConnectWalletModal(props: any) {
     </div>
   )
 }
-

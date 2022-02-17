@@ -59,8 +59,8 @@ export const APP_NETWORKS_SUPPORT: {[key: number]: NetworkInfo } = {
   [ETH_CHAIN_ID]: {
     name: 'Ethereum',
     id: ETH_CHAIN_ID,
-    icon: "/images/ethereum.svg",
-    disableIcon: "/images/ethereum-disabled.png",
+    icon: EthereumNetworkIcon,
+    // disableIcon: "/images/ethereum-disabled.png",
     currency: 'ETH',
     networkName: NETWORK_NAME_MAPPINGS[ETH_CHAIN_ID],
     details: {
@@ -78,8 +78,8 @@ export const APP_NETWORKS_SUPPORT: {[key: number]: NetworkInfo } = {
   [BSC_CHAIN_ID]: {
     name: 'BSC Mainnet',
     id: BSC_CHAIN_ID ,
-    icon: "/images/bsc.svg",
-    disableIcon: "/images/binance-disabled.png",
+    icon: BSCNetworkIcon,
+    // disableIcon: "/images/binance-disabled.png",
     currency: 'BNB',
     networkName: NETWORK_NAME_MAPPINGS[BSC_CHAIN_ID],
     details: {
@@ -97,8 +97,8 @@ export const APP_NETWORKS_SUPPORT: {[key: number]: NetworkInfo } = {
   [POLYGON_CHAIN_ID]: {
     name: 'Polygon',
     id: POLYGON_CHAIN_ID,
-    icon: "/images/polygon-matic.svg",
-    disableIcon: "/images/polygon-matic-disabled.svg",
+    icon: PolygonNetworkIcon,
+    // disableIcon: "/images/polygon-matic-disabled.svg",
     currency: 'MATIC',
     networkName: NETWORK_NAME_MAPPINGS[POLYGON_CHAIN_ID],
     details: {
@@ -116,9 +116,7 @@ export const APP_NETWORKS_SUPPORT: {[key: number]: NetworkInfo } = {
 }
 
 
-export const requestSupportNetwork = async (chainId: string, walletName: string) => {
-  // console.log(chainId, (window as any).BinanceChain);
-  
+export const requestSupportNetwork = async (chainId: string, walletName: string) => {  
   const provider = walletName === ConnectorNames.MetaMask ? (window as any).ethereum : (window as any).BinanceChain;
   
   if (provider) {
