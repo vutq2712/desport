@@ -40,6 +40,21 @@ export enum ConnectorNames {
   // Fortmatic = 'Fortmatic'
 }
 
+export function walletIconByNames(walletName: string) {
+  switch (walletName) {
+    case ConnectorNames.MetaMask:
+      return MetamaskIcon;
+    case ConnectorNames.BSC:
+      return BSCNetworkIcon;
+    case ConnectorNames.WalletConnect:
+      return WalletConnectIcon;
+    case ConnectorNames.WalletLinkConnect:
+      return CoinbaseWalletIcon;
+    default:
+      return MetamaskIcon;
+  }
+}
+
 
 export enum WalletNames {
   Injected = "Injected",

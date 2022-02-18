@@ -70,15 +70,17 @@ export function ConnectWalletModal(props: any) {
         await activate(connector, undefined, true)
           .then(() => {
             setWalletNameSuccess(wallet);
+            localStorage.setItem('walletNameSuccess',wallet);
           })
           .catch(async error => {
             console.log(connector);
             
             console.log(error,'error');
             
-          })
-        }
-        modalRef.close({appChainID,wallet})
+          });
+      }
+      
+      modalRef.close({appChainID,wallet,connector})
     } catch (error) {
       
     }
@@ -94,7 +96,7 @@ export function ConnectWalletModal(props: any) {
           walletName[walletName.length - 1] as string
         )
       }
-    };
+    };    
 
     currentConnector && selectedNetwork && walletName.length > 0 && tryLoginAfterSwitch();
   }, []);
@@ -143,11 +145,14 @@ export function ConnectWalletModal(props: any) {
       </div>
       <div className='modal-actions'>
         <button type='button' className='de-btn' onClick={modalRef.close}>CANCEL</button>
-        <button type='submit' disabled={!agree || selectedNetwork === '' || selectedWallet === ''} className='de-btn de-btn-primary w-100' onClick={() => {
-          tryActivate( 
-          currentConnector as AbstractConnector,
-          selectedNetwork,
-          walletName[walletName.length - 1] as string)}}>CONNECT</button>
+        <button type='submit' disabled={!agree || selectedNetwork === '' || selectedWallet === ''} className='de-btn de-btn-primary w-100' 
+          onClick={() => {
+            tryActivate( 
+            currentConnector as AbstractConnector,
+            selectedNetwork,
+            walletName[walletName.length - 1] as string)}}
+        >
+          CONNECT</button>
       </div>
     </div>
   )

@@ -1,10 +1,16 @@
+import React from "react";
+import { walletIconByNames } from "../connect-wallet-modal/connectors";
 import { NETWORK_NAME_MAPPINGS } from "../connect-wallet-modal/connectors/networks";
+import { NetworkItem } from "../network-item";
 
 export function DisconnectWalletModal(props: any) {
   const { modalRef, data } = props;
   const disconnect = async () => {
     try {
       data.deactivate();
+      localStorage.setItem('networkId','');
+      localStorage.setItem('wallet','');
+      localStorage.setItem('connectedAccount','');
       modalRef.close();
     } catch (ex) {
       console.log(ex)
@@ -22,8 +28,8 @@ export function DisconnectWalletModal(props: any) {
       </div>
       <div className='modal-inner'>
         <div className="de-wallet-info de-mx-0 d-flex">
-          <div className="col-md-3 col-4" >
-            {/* <img src='/assets/images/avatar.png' alt='Avatar' /> */}
+          <div className="col-md-3 col-4 de-account-avatar">
+            <img src='/assets/images/avatar.png' alt='Avatar' />
           </div>
           <div className="col-md-3 col-4">
             <ul className="list-unstyled de-mb-0">
@@ -51,7 +57,10 @@ export function DisconnectWalletModal(props: any) {
             </ul>
           </div>
         </div>
-        <div className="de-account-wallet d-flex justify-content-between de-mt-3">
+        <div className="de-account-wallet d-flex justify-content-between align-items-center de-mt-3">
+          <div>
+            {React.createElement(walletIconByNames(data.selectedWallet))}
+          </div>
           <div>{data?.accounts} </div>
           <div>
             <a href="javascript:void(0);" onClick={()=>{navigator.clipboard.writeText(data?.accounts)}}>Copy</a>

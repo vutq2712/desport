@@ -4,12 +4,35 @@
     border-radius: 8px;
     display: flex;
     padding: 15px;
+    .de-account-avatar{
+      margin-right: 30px;
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 50%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      background-color: transparent;
+      border: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      outline: none;
+      img{
+        height: 100%;
+        border-radius: 50%;
+        object-fit: contain;
+      }
+    }
   }
   .de-account-wallet{
     background-color: #1F064D;
     padding: 16px 20px;
     border: 1px solid #2F2383;
     border-radius: 8px;
+    svg {
+      width: 25;
+    }
   }
   .de-icon{
     background-repeat: no-repeat;

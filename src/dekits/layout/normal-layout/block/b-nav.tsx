@@ -3,22 +3,22 @@ import Link from "next/link";
 import { ConnectWalletModal } from "@app/dekits/components/connect-wallet-modal";
 import { openModal } from "@app/dekits/modal";
 import { useSession } from '@app/hooks/session';
-import { injected } from "@app/dekits/components/connect-wallet-modal/connectors";
 import { useWeb3React } from "@web3-react/core";
 import { getAccountBalance, trimMiddlePartAddress } from "@app/dekits/components/connect-wallet-modal/ultils/accountAdress";
 import BigNumber from 'bignumber.js';
 import { DisconnectWalletModal } from "@app/dekits/components/disconnect-wallet-modal";
+import { AbstractConnector } from "@web3-react/abstract-connector";
+import { useSessionWallet } from "@app/hooks/wallet";
 
 export default function Nav(props) {
   const { isLoggedIn, userInfo } = useSession();
   const [accounts,setAccount] = useState('');
-  // const [active,setActive] = useState(false);
   const [balance,setBalance] = useState(null as any);
   const [selectedNetwork, setSelectedNetwork] = useState('');
   const [selectedWallet, setSelectedWallet] = useState('');
-
-
-  const { active, account, connector, deactivate } = useWeb3React()
+  const [currentConnector, setCurrentConnector] = useState<undefined | AbstractConnector>(undefined);
+  
+  const { active, account, connector, deactivate, error } = useWeb3React()
   
   const handleConnectWalletClick = useCallback(() => {
     const connectWallet = openModal(ConnectWalletModal, { dialogClassName: 'de-modal-md', closeButton: true });
@@ -29,6 +29,11 @@ export default function Nav(props) {
       
       setSelectedNetwork(data.appChainID);
       setSelectedWallet(data.wallet);
+      setCurrentConnector(data.connector)
+
+      localStorage.setItem('networkId',data.appChainID);
+      localStorage.setItem('wallet',data.wallet);
+      localStorage.setItem('connector', JSON.stringify(data.connector))
       const accountBalance = await getAccountBalance(
         data.appChainID,
         data.wallet,
@@ -39,13 +44,93 @@ export default function Nav(props) {
     })
   }, []);
 
+  const handleConnectorDisconnect = useCallback(() => {
+    deactivate();
+    setSelectedNetwork('');
+    setSelectedWallet('');
+    localStorage.setItem('networkId','');
+    localStorage.setItem('wallet','');
+    localStorage.setItem('connectedAccount','');
+    localStorage.setItem('connector', '')
+    setCurrentConnector(undefined);
+  },[])
+
   useEffect(() => {    
-    if(account)
-      setAccount(account);
+    console.log('aaa');
+    if (currentConnector && currentConnector.on && !active && !error) {
+      const handleWeb3ReactUpdate = (updated: any) => {
+        if (updated.account) {
+          if (updated.account) {
+            console.log(updated.account,'updated');
+            
+            setAccount(updated.account);
+            localStorage.setItem('connectedAccount',updated.account);
+          } else setAccount('');
+        }
+
+        // if (updated.chainId) {
+          // const chainId = Number(updated.chainId).toString();
+
+          // if (APP_NETWORKS_ID.indexOf(chainId.toString()) >= 0) {
+          //   dispatch(
+          //     settingAppNetwork(
+          //       NetworkUpdateType.App,
+          //       APP_NETWORKS_ID[APP_NETWORKS_ID.indexOf(chainId.toString())] as string
+          //     ));
+
+          //   switchNetwork(APP_NETWORKS_ID[APP_NETWORKS_ID.indexOf(chainId.toString())] as string, chainId);
+          //   return;
+          // }
+
+          // switchNetwork(appChainID, chainId);
+          // chainId && dispatch(settingAppNetwork(NetworkUpdateType.Wallet, chainId.toString()))
+        // }
+      }
+
+      const handleWeb3ReactError = (err: any) => {
+        if (err === 'NaN ChainId') {
+          alert(`App network (${selectedNetwork}) doesn't mach to network selected in wallet: NaN. Learn how to change network in wallet or`);
+        }
+      }
+
+      currentConnector.on('Web3ReactUpdate', handleWeb3ReactUpdate)
+      currentConnector.on('Web3ReactError', handleWeb3ReactError);
+      currentConnector.on('Web3ReactDeactivate', handleConnectorDisconnect);
+
+      return () => {
+        if (currentConnector && currentConnector.removeListener && active) {
+          currentConnector.removeListener('Web3ReactUpdate', handleWeb3ReactUpdate);
+          currentConnector.removeListener('Web3ReactError', handleWeb3ReactError);
+          currentConnector.removeListener('Web3ReactDeactivate', handleConnectorDisconnect);
+        }
+      }
+    }
+
+    return;
+  }, [currentConnector, account]);
+
+  useEffect(() => {    
+    if(account){
+      setAccount(account as string);
+      localStorage.setItem('connectedAccount',account as any);
+    }
   },[account])
 
+
+  useEffect(()=>{
+    const {networkId, wallet, connectedAccount, walletNameSuccess} = useSessionWallet(); 
+    const getAccountDetail = async () => { 
+      if (networkId && wallet) {
+        const accountBalance = await getAccountBalance(networkId, wallet, connectedAccount as string, walletNameSuccess as string);
+        setAccount(connectedAccount as string);
+        setBalance(new BigNumber(accountBalance._hex).div(new BigNumber(10).pow(18)).toFixed(5));
+      }
+    }
+    getAccountDetail();
+  },[selectedNetwork,selectedWallet,currentConnector])
+
   const handleDisconnectWallet = useCallback(()=>{
-    const disconnectWallet = openModal(DisconnectWalletModal, {dialogClassName: 'de-modal-md', closeButton: true, data: {accounts, balance, selectedNetwork, selectedWallet, deactivate}});
+    openModal(DisconnectWalletModal, {dialogClassName: 'de-modal-md', closeButton: true, data: {accounts, balance, selectedNetwork:selectedNetwork || localStorage.getItem('networkId'), selectedWallet: selectedWallet || localStorage.getItem('wallet'), deactivate}});
   },[accounts, balance, selectedNetwork, selectedWallet])
 
 
@@ -118,7 +203,7 @@ export default function Nav(props) {
         {isLoggedIn ? <div className='de-account'>
           <div className='de-account-info'>
             <button type='button' onClick={props.settingToggle} className='de-account-username'>{userInfo?.name}</button>
-            {active ? <div className='de-account-balance' onClick={handleDisconnectWallet}>
+            {localStorage.getItem('connectedAccount') ? <div className='de-account-balance' onClick={handleDisconnectWallet}>
               <div className='de-sub-info'>
                 <div className='de-text-gold'>
                   <svg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
